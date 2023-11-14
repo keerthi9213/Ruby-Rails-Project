@@ -1,8 +1,8 @@
-# Team xxxx
+# Team Purple
 
 ## Team Members
 
-- xxxx
+- Keerthi Reddy
 
 ## How to Initialize and Run the App
 
