@@ -1,8 +1,8 @@
-# Team xxxx
+# Team Purple
 
 ## Team Members
 
-- xxxx
+- Jashwanth Reddy Dudipala
 
 ## How to Initialize and Run the App
 
