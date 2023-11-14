@@ -2,6 +2,7 @@
 
 ## Team Members
 
+- Jashwanth Reddy Dudipala
 - Keerthi Reddy
 
 ## How to Initialize and Run the App
