@@ -2,10 +2,12 @@
 
 ## Team Members
 
+
+- Keerthi Reddy (keerthireddy9213@gmail.com)
 - Tejaswi Kanneganti (kannegantitejaswi20@gmail.com)
 - Jashwanth Reddy Dudipala (jashwanthreddy.vgf196@gmail.com) 
 - Santhosh Reddy Doodhipala (sddhpala@memphis.edu)
-- Keerthi Reddy
+
 
 ## How to Initialize and Run the App
 
