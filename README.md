@@ -3,6 +3,7 @@
 ## Team Members
 
 
+- Tejaswi Kanneganti
 - Santhosh Reddy Doodhipala
 - Jashwanth Reddy Dudipala
 - Keerthi Reddy
