@@ -6,7 +6,7 @@
 - Tejaswi Kanneganti
 - Santhosh Reddy Doodhipala
 - Jashwanth Reddy Dudipala
-- Keerthi Reddy
+- Keerthi Reddy (keerthireddy9213@gmail.com)
 
 
 ## How to Initialize and Run the App
