@@ -3,7 +3,7 @@
 ## Team Members
 
 
-- Tejaswi Kanneganti
+- Tejaswi Kanneganti(kannegantitejaswi20@gmail.com)
 - Santhosh Reddy Doodhipala
 - Jashwanth Reddy Dudipala
 - Keerthi Reddy
