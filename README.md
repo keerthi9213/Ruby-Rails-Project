@@ -5,7 +5,7 @@
 
 - Tejaswi Kanneganti
 - Santhosh Reddy Doodhipala
-- Jashwanth Reddy Dudipala 
+- Jashwanth Reddy Dudipala (jashwanthreddy.vgf196@gmail.com) 
 - Keerthi Reddy
 
 
