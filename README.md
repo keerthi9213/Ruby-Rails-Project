@@ -3,8 +3,8 @@
 ## Team Members
 
 - Tejaswi Kanneganti (kannegantitejaswi20@gmail.com)
+- Jashwanth Reddy Dudipala (jashwanthreddy.vgf196@gmail.com) 
 - Santhosh Reddy Doodhipala (sddhpala@memphis.edu)
-- Jashwanth Reddy Dudipala
 - Keerthi Reddy
 
 ## How to Initialize and Run the App
