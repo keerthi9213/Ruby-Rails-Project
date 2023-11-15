@@ -4,7 +4,7 @@
 
 
 - Tejaswi Kanneganti
-- Santhosh Reddy Doodhipala 
+- Santhosh Reddy Doodhipala (sddhpala@memphis.edu)
 - Jashwanth Reddy Dudipala
 - Keerthi Reddy
 
