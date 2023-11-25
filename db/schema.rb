@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_24_235333) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_25_022652) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_24_235333) do
     t.decimal "Price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cart_items", force: :cascade do |t|
+    t.bigint "cart_id", null: false
+    t.bigint "birdhouse_id", null: false
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["birdhouse_id"], name: "index_cart_items_on_birdhouse_id"
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -47,5 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_24_235333) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cart_items", "birdhouses"
+  add_foreign_key "cart_items", "carts"
   add_foreign_key "carts", "users"
 end

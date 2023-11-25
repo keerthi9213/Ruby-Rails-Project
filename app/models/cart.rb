@@ -19,4 +19,16 @@
 #
 class Cart < ApplicationRecord
   belongs_to :user
+  has_many :cart_items, dependent: :destroy
+  has_many :birdhouses, through: :cart_items
+
+  def add_birdhouse(birdhouse)
+    current_item = cart_items.find_by(birdhouse_id: birdhouse.id)
+    if current_item
+      current_item.quantity += 1
+    else
+      cart_items.build(birdhouse: birdhouse, quantity: 1)
+    end
+    current_item
+  end
 end
