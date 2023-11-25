@@ -10,6 +10,7 @@
 #  Roof_design     :string
 #  Size            :string
 #  Style           :string
+#  likes           :integer          default(10)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

@@ -25,6 +25,10 @@ class CartItem < ApplicationRecord
 
   # Set a default value for quantity
   after_initialize :set_defaults, unless: :persisted?
+
+  def total_price
+    quantity * birdhouse.price
+  end
  
   private
 

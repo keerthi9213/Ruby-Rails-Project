@@ -29,6 +29,12 @@ class Cart < ApplicationRecord
     else
       cart_items.build(birdhouse: birdhouse, quantity: 1)
     end
+    current_item.save
     current_item
+  end
+
+  def total_cost
+    items_cost = cart_items.to_a.sum(&:total_price)
+    items_cost + shipping_fee + taxes
   end
 end

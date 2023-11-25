@@ -15,7 +15,16 @@ class CartController < ApplicationController
         end
         redirect_to listings_show_path(id: birdhouse.id)
     end
+    
+    
+    def cart
+        @cart = current_user.cart || current_user.create_cart
+        @shipping_fee = @cart.shipping_fee
+        @taxes = @cart.taxes
+        @total_price = @cart.total_price
+    end
 
+    
     def set_birdhouse
         @birdhouse = Birdhouse.find(params[:id])
     end
