@@ -13,4 +13,12 @@ module ApplicationHelper
     BOOTSTRAP_ALERT_CLASS.fetch(flash_key, 'alert-info')
   end
 
+  def active_class(path)
+    if request.path == path
+      return 'active'
+    else
+      return ''
+    end
+  end
+
 end

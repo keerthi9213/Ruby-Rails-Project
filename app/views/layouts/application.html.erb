@@ -1,20 +1,90 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>App</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>App</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+  <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
+  <%= javascript_importmap_tags %>
 
-  <body>
-    <%= render 'shared/flash' %>
+  <style>
+    /* Navbar styles */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background: black;
+    }
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+    }
+    .navbar-logo img {
+      max-height: 50px; /* Adjust the size of your logo */
+    }
+    .navbar-nav {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      margin: 0; /* Remove margin to align items in line */
+    }
+    .nav-item {
+      margin-left: 20px;
+    }
+    .nav-link, .cart-icon {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    .nav-link:hover {
+      text-decoration: underline;
+      height: 24;
+    }
+    .cart-icon img {
+      max-height: 30px; /* Smaller size for the cart icon */
+      margin-right: 10px;
+    }
+    .sign-out {
+      display: flex;
+      align-items: center;
+      margin-left: 20px; /* Space between cart icon and sign-out */
+    }
+    /* Main container styles */
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 15px;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-logo">
+      <%= link_to image_tag('logo.jpg', alt: 'Logo', height: '50') %>
+    </div>
 
-    <main role="main" class="container">
-      <%= yield %>
-    </main>
-  </body>
+    <nav class="navbar-nav">
+      <% if user_signed_in? %>
+        <!-- Cart icon and Sign Out button only appear for signed-in users -->
+          <%= link_to image_tag('cart.jpg', alt: 'Cart', height: '24'), class: 'cart-icon' %>
+        <div class="sign-out">
+          <span class="nav-item">Hi, <%= current_user.email %></span>
+           <%= link_to image_tag('profile.jpg', alt: 'Profile', height: '24') %>
+          <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link', data: { turbo: false } %>
+        </div>
+      <% else %>
+        <%= link_to 'Sign In', new_user_session_path, class: 'nav-item nav-link' %>
+        <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-item nav-link' %>
+      <% end %>
+    </nav>
+  </header>
+
+  <main role="main" class="container">
+    <%= yield %>
+  </main>
+</body>
 </html>

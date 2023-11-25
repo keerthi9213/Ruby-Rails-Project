@@ -18,3 +18,49 @@ user2 = User.create!(
   email:    'bob@email.com',
   password: 'password'
 )
+
+# Clear existing data to prevent duplicates when seeding
+#Birdhouse.destroy_all
+
+# Seed the Birdhouse table with sample data
+birdhouses = Birdhouse.create([
+  {
+    Material: 'Ceramic',
+    Color: 'Blue',
+    Style: 'Vintage',
+    Roof_design: 'Classic Teapot Lid',
+    Size: 'M',
+    Artistic_detail: 'Hand-painted floral design',
+    Price: 49.99
+  },
+  {
+    Material: 'Stoneware',
+    Color: 'Green',
+    Style: 'Modern',
+    Roof_design: 'Sleek Round Lid',
+    Size: 'S',
+    Artistic_detail: 'Abstract Geometric Patterns',
+    Price: 59.99
+  },
+  {
+    Material: 'Wood',
+    Color: 'Red',
+    Style: 'Rustic',
+    Roof_design: 'Pitched Barn Roof',
+    Size: 'L',
+    Artistic_detail: 'Carved Wood Details',
+    Price: 39.99
+  },
+  {
+    Material: 'Glass',
+    Color: 'Clear',
+    Style: 'Contemporary',
+    Roof_design: 'Smooth Dome Lid',
+    Size: 'XL',
+    Artistic_detail: 'Stained Glass Panels',
+    Price: 69.99
+  }
+])
+
+
+

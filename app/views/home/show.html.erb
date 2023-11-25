@@ -1,5 +1,70 @@
-<h1>Home Page</h1>
 
-<p>
-  Find me in app/views/home/show.html.erb
-</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Teapot Birdhouses</title>
+  <!-- Include your CSS files here -->
+  <style>
+  /* General body styling */
+body {
+  font-family: Arial, sans-serif;
+  background: black;
+}
+
+/* Navigation bar styling */
+nav ul {
+  list-style-type: none;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+/* Intro section styling */
+.intro {
+  margin-bottom: 20px;
+}
+
+/* Link styling */
+a {
+  color: blue;
+  text-decoration: none;
+}
+
+/* Footer styling */
+footer {
+  margin-top: 20px;
+}
+</style>
+</head>
+<body>
+  <header>
+    <!-- Your navigation bar -->
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><%= link_to "Listings", listings_path() %></li>
+        <li><a href="/guide">Guide</a></li>
+        <li><a href="/customization">Customization</a></li>
+        <li><a href="/gallery">Gallery</a></li>
+        <li><a href="/about">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="intro">
+    <h1>Teapot Birdhouses</h1>
+    <p>
+      Teapot Birdhouses is a magical place where the marvels of nature and creative expression collide. Discover a wide variety of distinctive teapot birdhouse designs, customize them to your liking, and turn your garden into a bird's paradise. Our Birdhouse Compatibility Guide offers current environmental data and professional recommendations for thoughtful birdhouse installation, with an emphasis on blending seamlessly into your garden's existing ecosystem. Our selection prioritizes choice and quality. Take part in a birdwatching expedition, welcome to Teapot Birdhouses, where the beautiful songs of the birds bring your garden to life.
+    </p>
+    <a href="/inventory">Click to manage Inventory</a>
+  </section>
+
+ 
+
+  <footer>
+    <!-- Your footer here -->
+  </footer>
+</body>
+</html>
