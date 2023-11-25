@@ -4,4 +4,8 @@ class HomeController < ApplicationController
     render :show
   end
 
+  def aboutus
+    
+  end
+
 end
