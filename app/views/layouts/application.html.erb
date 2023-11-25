@@ -8,6 +8,9 @@
 
   <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
   <%= javascript_importmap_tags %>
+  <% flash.each do |type, message| %>
+  <%= content_tag(:div, message, class: "flash #{type}") %>
+  <% end %>
 
   <style>
     /* Navbar styles */
@@ -86,5 +89,7 @@
   <main role="main" class="container">
     <%= yield %>
   </main>
+
+  
 </body>
 </html>

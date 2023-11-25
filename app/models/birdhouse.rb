@@ -14,4 +14,7 @@
 #  updated_at      :datetime         not null
 #
 class Birdhouse < ApplicationRecord
+
+    has_many :cart_items
+    has_many :carts, through: :cart_items
 end
