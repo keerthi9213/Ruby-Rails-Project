@@ -1,0 +1,93 @@
+<!-- app/views/home/community.html.erb -->
+<html>
+<head>
+<body>
+<div class="community-page">
+  <nav>
+    <!-- Navigation -->
+  </nav>
+  <style>
+
+
+
+.question, .reply {
+  background-color: #ffffff; 
+  border: 1px solid #cccccc;
+  color: #333333; 
+}
+
+
+.button, .submit-reply input[type="submit"] {
+  background-color: #007bff; 
+  color: #ffffff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:hover, .submit-reply input[type="submit"]:hover {
+  background-color: #0056b3; 
+}
+
+.community-page {
+  padding: 20px;
+  background-color: #f8f9fa; 
+}
+
+.ask-question, .questions-list {
+  margin-bottom: 20px;
+}
+
+.ask-question textarea, .submit-reply textarea {
+  height: 50px; 
+  margin-bottom: 10px;
+}
+
+.reply {
+  margin-left: 20px;
+  padding: 10px;
+  background-color: #e9ecef; 
+}
+
+
+
+
+  </style>
+
+  <div class="community-page">
+  <nav>
+    <!-- Navigation -->
+  </nav>
+
+  <%= form_for @new_question, url: questions_path do |f| %>
+    <div class="ask-question">
+      <%= f.label :content, "Ask here!", style: 'color: #333;' %>
+      <%= f.text_area :content,placeholder: "Enter you question", class: 'question-textarea' %>
+      <%= f.submit "Submit", class: 'submit-button' %>
+    </div>
+  <% end %>
+
+  <div class="questions-list">
+    <% @questions.each do |question| %>
+      <div class="question">
+        <p class="question-content"><%= question.content %></p>
+        <% question.answers.each do |answer| %>
+          <div class="reply">
+            <p class="reply-content"><%= answer.content %></p>
+          </div>
+        <% end %>
+        <%= form_for [question, Answer.new], url: question_answers_path(question) do |f| %>
+          <div class="submit-reply">
+            <%= f.text_area :content, placeholder: "Your answer", class: 'answer-textarea' %>
+            <%= f.submit "Reply", class: 'reply-button' %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+</body>
+</head>
+</html>

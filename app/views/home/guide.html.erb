@@ -1,0 +1,66 @@
+<html>
+<head>
+  <title>Teapot Birdhouses</title>
+  <!-- CSS files -->
+  <style>
+  
+body {
+  font-family: Arial, sans-serif;
+  background: black;
+}
+
+/* Navigation bar styling */
+nav ul {
+  list-style-type: none;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+/* Intro section styling */
+.intro {
+  margin-bottom: 20px;
+}
+
+.button {
+  /* Styles for button */
+  padding: 10px 20px;
+  background-color: #4CAF50; 
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+}
+
+/* Link styling */
+a {
+  color: blue;
+  text-decoration: none;
+}
+
+/* Footer styling */
+footer {
+  margin-top: 20px;
+}
+</style>
+</head>
+<body>
+  <header>
+    <!-- Your navigation bar -->
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        
+        <li><%= link_to "Guide", guide_path() %></li>
+        
+        <li><%= link_to "Community", community_path() %></li>
+        <li><a href="/aboutus">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+<%= link_to 'Start Quiz', '#', class: 'button' %>
+</head>
+</html>

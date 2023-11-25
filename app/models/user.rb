@@ -19,6 +19,8 @@
 class User < ApplicationRecord
 
   has_one :cart, dependent: :destroy
+  has_many :questions
+  has_many :answers
 
   def create_cart
     build_cart(shipping_fee: 0, taxes: 0).save
