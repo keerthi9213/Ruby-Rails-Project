@@ -18,6 +18,17 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class User < ApplicationRecord
+
+  has_one :cart, dependent: :destroy
+  has_many :questions
+  has_many :answers
+
+  def create_cart
+    build_cart(shipping_fee: 0, taxes: 0).save
+    cart
+
+  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :orders, dependent: :destroy

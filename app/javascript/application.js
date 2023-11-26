@@ -3,8 +3,10 @@ import "@hotwired/turbo-rails"
 import "controllers"
 
 import "@popperjs/core"
-import "bootstrap"
+import Rails from "@rails/ujs"
 import autosize from "autosize"
+import "bootstrap"
+Rails.start()
 
 document.addEventListener("turbo:load", () => {
   const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')

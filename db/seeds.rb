@@ -19,6 +19,30 @@ user2 = User.create!(
   password: 'password'
 )
 
+question1 = Question.create!(
+  content: "What's the best material for a birdhouse in a rainy climate?",
+  user: user1
+)
+
+question2 = Question.create!(
+  content: "How can I attract bluebirds to my garden?",
+  user: user2
+)
+
+# Answers
+
+answer1 = Answer.create!(
+  content: "Ceramic materials are good for rainy climates due to their durability and water resistance.",
+  question: question1,
+  user: user2
+)
+
+answer2 = Answer.create!(
+  content: "Bluebirds prefer open spaces with low grass and perches from which they can hunt insects.",
+  question: question2,
+  user: user1
+)
+
 # Clear existing data to prevent duplicates when seeding
 #Birdhouse.destroy_all
 

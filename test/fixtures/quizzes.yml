@@ -1,0 +1,27 @@
+# == Schema Information
+#
+# Table name: quizzes
+#
+#  id                :bigint           not null, primary key
+#  city              :string
+#  number_of_birds   :integer
+#  number_of_species :integer
+#  species           :text
+#  temperature       :string
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
+
+one:
+  city: MyString
+  temperature: MyString
+  number_of_birds: 1
+  number_of_species: 1
+  species: MyText
+
+two:
+  city: MyString
+  temperature: MyString
+  number_of_birds: 1
+  number_of_species: 1
+  species: MyText
