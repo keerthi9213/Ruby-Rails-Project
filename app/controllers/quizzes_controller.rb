@@ -15,16 +15,17 @@ class QuizzesController < ApplicationController
       # Redirect to a 'thank you' page or display a success message
     else
       # Re-render the :new template with error messages
+      flash.now[:error] = "There was a problem saving your quiz. Please review the errors and try again."
       render :new
     end
   end
 
-  private
+  #private
 
-  #def quiz_params
+  def quiz_params
     # Strong parameters for quiz submission
-    #params.require(:quiz).permit(:city, :temperature, :number_of_birds, :number_of_species, :species)
-  #end
+    params.require(:quiz).permit(:city, :temperature, :number_of_birds, :number_of_species, :species)
+  end
   
 
 end
