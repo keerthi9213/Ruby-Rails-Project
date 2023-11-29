@@ -14,4 +14,8 @@ class HomeController < ApplicationController
 
   end
 
+  def aboutus
+    
+  end
+
 end
