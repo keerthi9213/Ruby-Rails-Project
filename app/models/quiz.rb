@@ -13,6 +13,7 @@
 #
 class Quiz < ApplicationRecord
     # Add validations for presence or numericality as needed
+    belongs_to :user
     validates :city, presence: true
     validates :temperature, presence: true
     validates :number_of_birds, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
