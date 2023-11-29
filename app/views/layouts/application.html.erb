@@ -8,6 +8,9 @@
 
   <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
   <%= javascript_importmap_tags %>
+  <% flash.each do |type, message| %>
+  <%= content_tag(:div, message, class: "flash #{type}") %>
+  <% end %>
 
   <style>
     /* Navbar styles */
@@ -70,7 +73,7 @@
     <nav class="navbar-nav">
       <% if user_signed_in? %>
         <!-- Cart icon and Sign Out button only appear for signed-in users -->
-          <%= link_to image_tag('cart.jpg', alt: 'Cart', height: '24'), class: 'cart-icon' %>
+          <%= link_to image_tag('cart.jpg', alt: 'Cart', height: '24'),cart_path, class: 'cart-icon' %>
         <div class="sign-out">
           <span class="nav-item">Hi, <%= current_user.email %></span>
            <%= link_to image_tag('profile.jpg', alt: 'Profile', height: '24') %>
@@ -86,6 +89,8 @@
   <main role="main" class="container">
     <%= yield %>
   </main>
+
+  
 </body>
 </html>
 

@@ -82,7 +82,11 @@
     .button:hover {
       opacity: 0.9;
     }
-    
+
+    .disabled-button {
+  background-color: grey; /* Example styling for the disabled state */
+  /* Other styles for the disabled button */
+}
   </style>
 </head>
 <body>
@@ -100,7 +104,19 @@
     <p><strong>Artistic Detail:</strong> <%= @birdhouse.Artistic_detail %></p>
     <p class="price">$<%= '%.2f' % @birdhouse.Price %></p>
     <%= link_to 'Buy now', '#', class: 'button buy' %>
-    <%= link_to 'Add to cart', '#', class: 'button add-to-cart' %>
+  
+    <!-- app/views/home/listings_show.html.erb -->
+
+    
+    <%= button_to 'Add to Cart', 
+              add_to_cart_path(id: @birdhouse.id), 
+              method: :post, 
+              class: 'button add-to-cart', 
+              id: 'add-to-cart-button',
+              data: { turbo: "false", disable_with: "Adding..." },
+              onclick: "this.innerText='Added'; this.disabled=true; this.classList.add('disabled-button');" %>
+
+
   </div>
 </div>
 
