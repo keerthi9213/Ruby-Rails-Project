@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'home/listings/:id', to: 'birdhouse#listings_show', as: 'listings_show'
   post 'home/listings/:id/add_to_cart', to: 'cart#add', as: 'add_to_cart'
   get 'home/cart', to: 'cart#cart', as: 'cart'
+  get 'home/aboutus', to: 'home#aboutus', as: 'aboutus'
   # Devise routes for user sign-in, sign-up, sign-out, etc.
   devise_for :users
 
