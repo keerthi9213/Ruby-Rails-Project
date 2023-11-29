@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Birdhouse Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: black;
+    }
+    .navbar {
+      background-color: black;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+    .navbar-brand img {
+      height: 40px; /* Adjust the size of your logo */
+    }
+    .user-info {
+      display: flex;
+      align-items: center;
+    }
+    .user-info a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+    }
+    .birdhouse-card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      max-width: 900px;
+      width: 100%;
+      margin: 20px auto; /* Centers the card on the page */
+    }
+    .birdhouse-image {
+      max-width: 50%;
+      border-radius: 10px;
+    }
+    .info {
+      width: 50%;
+      padding-left: 20px; /* Spacing between image and details */
+    }
+    .info h3 {
+      color: #333;
+    }
+    .info p {
+      color: #666;
+    }
+    .price {
+      color: #2c5ea0;
+      font-size: 30px;
+      font-weight: bold;
+    }
+    .button {
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: white;
+      display: inline-block;
+      margin-top: 20px; /* Space above the buttons */
+      cursor: pointer;
+      border: none;
+      text-align: center;
+    }
+    .buy {
+      background-color: #5cb85c;
+    }
+    .add-to-cart {
+      background-color: #f0ad4e;
+    }
+    .button:hover {
+      opacity: 0.9;
+    }
+    
+  </style>
+</head>
+<body>
+
+
+
+<div class="birdhouse-card">
+  <%= image_tag "birdhouse#{params[:id]}.jpg", alt: "Birdhouse Image", class: 'birdhouse-image' %>
+  <div class="info">
+    <h3><%= @birdhouse.Style %> Birdhouse</h3>
+    <p><strong>Material:</strong> <%= @birdhouse.Material %></p>
+    <p><strong>Color:</strong> <%= @birdhouse.Color %></p>
+    <p><strong>Roof Design:</strong> <%= @birdhouse.Roof_design %></p>
+    <p><strong>Size:</strong> <%= @birdhouse.Size %></p>
+    <p><strong>Artistic Detail:</strong> <%= @birdhouse.Artistic_detail %></p>
+    <p class="price">$<%= '%.2f' % @birdhouse.Price %></p>
+    <%= link_to 'Buy now', '#', class: 'button buy' %>
+    <%= link_to 'Add to cart', '#', class: 'button add-to-cart' %>
+  </div>
+</div>
+
+</body>
+</html>

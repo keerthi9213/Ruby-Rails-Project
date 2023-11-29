@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root to:'home#show'
-
+  get 'home', to: 'home#show', as: 'home'
+  get 'home/listings', to: 'birdhouse#listings', as: 'listings'
+  get 'home/listings/:id', to: 'birdhouse#listings_show', as: 'listings_show'
   # Devise routes for user sign-in, sign-up, sign-out, etc.
   devise_for :users
 
