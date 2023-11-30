@@ -94,4 +94,3 @@ orders = Order.create!(
     payment_details: 'Visa ending with 9087',
     user: user1
 )
-

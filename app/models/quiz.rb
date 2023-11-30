@@ -10,8 +10,18 @@
 #  temperature       :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  user_id           :bigint
+#
+# Indexes
+#
+#  index_quizzes_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
 #
 class Quiz < ApplicationRecord
+    belongs_to :user
     # Add validations for presence or numericality as needed
     validates :city, presence: true
     validates :temperature, presence: true
