@@ -1,0 +1,37 @@
+<%= form_with model: @inventory_item, local: true do |f| %>
+  <% if @inventory_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@inventory_item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% @inventory_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, id: :inventory_item_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description, id: :inventory_item_description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity, id: :inventory_item_quantity %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.text_field :price, id: :inventory_item_price %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

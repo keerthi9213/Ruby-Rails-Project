@@ -9,24 +9,24 @@
   <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
   <%= javascript_importmap_tags %>
   <% flash.each do |type, message| %>
-  <%= content_tag(:div, message, class: "flash #{type}") %>
+    <%= content_tag(:div, message, class: "flash #{type}") %>
   <% end %>
 
   <style>
-    /* Navbar styles */
+    /* ... existing styles ... */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px;
-      background: black;
+      padding: 5px;
+      background: #4CAF50;
     }
     .navbar-logo {
       display: flex;
       align-items: center;
     }
     .navbar-logo img {
-      max-height: 50px; /* Adjust the size of your logo */
+      max-height: 50px; /* Adjust the size of logo */
     }
     .navbar-nav {
       display: flex;
@@ -62,6 +62,22 @@
       margin: auto;
       padding: 0 15px;
     }
+    .user-info {
+      display: flex;
+      align-items: center;
+    }
+    .user-info img {
+      margin-right: 10px; /* Add space between the icons */
+    }
+    .navbar-nav ul {
+      display: flex;
+      padding-left: 0;
+      margin: 0;
+      list-style-type: none; /* Removes bullet points */
+    }
+    .navbar-nav li {
+      margin-right: 20px; /* Space between nav items */
+    }
   </style>
 </head>
 <body>
@@ -69,19 +85,31 @@
     <div class="navbar-logo">
       <%= link_to image_tag('logo.jpg', alt: 'Logo', height: '50'), home_path %>
     </div>
-
+    
     <nav class="navbar-nav">
+      <!-- Navigation links -->
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><%= link_to "Listings", listings_path %></li>
+        <li><%= link_to "Guide", guide_path %></li>
+        <li><a href="/customization">Customization</a></li>
+        <li><%= link_to "Gallery", gallery_path %></li>
+        <li><a href="/about">About Us</a></li>
+      </ul>
+    </nav>
+    <nav>  
       <% if user_signed_in? %>
-        <!-- Cart icon and Sign Out button only appear for signed-in users -->
-          <%= link_to image_tag('cart.jpg', alt: 'Cart', height: '24'), class: 'cart-icon' %>
-        <div class="sign-out">
-          <span class="nav-item">Hi, <%= current_user.email %></span>
-           <%= link_to image_tag('profile.jpg', alt: 'Profile', height: '24') %>
+        <div class="user-info">
+          <!-- Cart icon -->
+          <%= link_to image_tag('cart.jpg', alt: 'Cart', height: '24'), class: 'nav-link' %>
+          <!-- Profile image -->
+          <%= link_to image_tag('profile.jpg', alt: 'Profile', height: '24'), class: 'nav-link' %>
+          <span>Hi, <%= current_user.email %></span>
           <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link', data: { turbo: false } %>
         </div>
       <% else %>
-        <%= link_to 'Sign In', new_user_session_path, class: 'nav-item nav-link' %>
-        <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-item nav-link' %>
+        <%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %>
+        <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
       <% end %>
     </nav>
   </header>
@@ -89,8 +117,6 @@
   <main role="main" class="container">
     <%= yield %>
   </main>
-
-  
 </body>
 </html>
 

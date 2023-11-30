@@ -22,6 +22,7 @@ class User < ApplicationRecord
   has_one :cart, dependent: :destroy
   has_many :questions
   has_many :answers
+  has_many :quizzes
 
   def create_cart
     build_cart(shipping_fee: 0, taxes: 0).save
@@ -31,8 +32,11 @@ class User < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  has_many :orders, dependent: :destroy
+  has_many :orders
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-            
+  def vendor?
+          self.role == 'vendor' # Assuming you have a 'role' attribute
+  end
 end
