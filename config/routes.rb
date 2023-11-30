@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   get 'home/guide/quiz', to: 'quizzes#new', as: 'new_quiz'
   post 'home/guide/quiz', to: 'quizzes#create', as: 'create_quiz'
 
+  get 'history', to: 'users#history', as: 'history'
+
   resources :questions, only: [:create, :show] do
     resources :answers, only: [:create]
   end
