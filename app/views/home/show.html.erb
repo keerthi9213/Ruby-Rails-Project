@@ -8,7 +8,8 @@
   /* General body styling */
 body {
   font-family: Arial, sans-serif;
-  background: black;
+  background: #FFFDD0;
+  color: black;
 }
 
 /* Navigation bar styling */
@@ -28,8 +29,11 @@ nav ul li {
 
 /* Link styling */
 a {
-  color: blue;
+  color: white;
   text-decoration: none;
+}
+b {
+  color: black;
 }
 
 /* Footer styling */
@@ -39,19 +43,7 @@ footer {
 </style>
 </head>
 <body>
-  <header>
-    <!-- Your navigation bar -->
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><%= link_to "Listings", listings_path() %></li>
-        <li><%= link_to "Guide", guide_path() %></li>
-        <li><a href="/customization">Customization</a></li>
-        <li><%= link_to "Gallery", gallery_path() %></li>
-        <li><%= link_to "about us", aboutus_path() %></li>
-      </ul>
-    </nav>
-  </header>
+  
 
   <section class="intro">
     <h1>Teapot Birdhouses</h1>

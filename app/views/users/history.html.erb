@@ -1,0 +1,12 @@
+<h1>Purchase History</h1>
+
+<% @orders.each do |order| %>
+  <div>
+    <h3>Order ID: <%= order.id %></h3>
+    <p>Item: <%= order.items %></p>
+    <p>Total cost: <%= order.total_cost %></p>
+    <p>Shipping Address: <%= order.shipping_address %></p>
+    <p>Payment details: <%= order.payment_details %></p>
+    <!-- Other order details -->
+  </div>
+<% end %>
