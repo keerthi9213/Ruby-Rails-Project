@@ -11,7 +11,14 @@ class HomeController < ApplicationController
   def community
     @questions = Question.includes(:answers).all
     @new_question = Question.new
+  end
+  
+  def aboutus
+    
+  end
 
+  def aboutus
+    
   end
 
 end
