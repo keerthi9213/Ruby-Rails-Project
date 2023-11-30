@@ -1,0 +1,13 @@
+<!-- app/views/orders/confirm.html.erb -->
+
+<h1>Order Confirmation</h1>
+
+<div>
+  <h2>Order Details</h2>
+
+  <!-- Other order details... -->
+
+  <p><strong>Order Total:</strong> <%= number_to_currency(@order_total) %></p>
+</div>
+
+<%= link_to "Place Order", order_confirm_path, method: :post %>

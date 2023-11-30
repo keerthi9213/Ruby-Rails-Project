@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_25_193454) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_29_235402) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,22 +64,25 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_25_193454) do
     t.index ["user_id"], name: "index_inventories_on_user_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "shipping_name"
+    t.string "shipping_address"
+    t.string "contact_number"
+    t.string "credit_card_number"
+    t.string "credit_card_expiry_date"
+    t.string "credit_card_cvv"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.text "content"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_questions_on_user_id"
-  end
-
-  create_table "quizzes", force: :cascade do |t|
-    t.string "city"
-    t.string "temperature"
-    t.integer "number_of_birds"
-    t.integer "number_of_species"
-    t.text "species"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -101,5 +104,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_25_193454) do
   add_foreign_key "cart_items", "carts"
   add_foreign_key "carts", "users"
   add_foreign_key "inventories", "users"
+  add_foreign_key "orders", "users"
   add_foreign_key "questions", "users"
 end

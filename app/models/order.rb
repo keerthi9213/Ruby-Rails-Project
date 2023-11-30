@@ -2,14 +2,16 @@
 #
 # Table name: orders
 #
-#  id               :bigint           not null, primary key
-#  items            :string
-#  payment_details  :string
-#  shipping_address :string
-#  total_cost       :integer
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
-#  user_id          :bigint           not null
+#  id                      :bigint           not null, primary key
+#  contact_number          :string
+#  credit_card_cvv         :string
+#  credit_card_expiry_date :string
+#  credit_card_number      :string
+#  shipping_address        :string
+#  shipping_name           :string
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  user_id                 :bigint           not null
 #
 # Indexes
 #
@@ -20,5 +22,5 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Order < ApplicationRecord
-    belongs_to :user
+  belongs_to :user
 end
