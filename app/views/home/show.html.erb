@@ -32,7 +32,14 @@ a {
   color: white;
   text-decoration: none;
 }
-
+.inventory-button{
+  background-color: #4CAF50; 
+  color: white;
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer;
+}
 /* Footer styling */
 footer {
   margin-top: 20px;
@@ -48,7 +55,7 @@ footer {
       Teapot Birdhouses is a magical place where the marvels of nature and creative expression collide. Discover a wide variety of distinctive teapot birdhouse designs, customize them to your liking, and turn your garden into a bird's paradise. Our Birdhouse Compatibility Guide offers current environmental data and professional recommendations for thoughtful birdhouse installation, with an emphasis on blending seamlessly into your garden's existing ecosystem. Our selection prioritizes choice and quality. Take part in a birdwatching expedition, welcome to Teapot Birdhouses, where the beautiful songs of the birds bring your garden to life.
     </p>
 
-    <%= button_to 'Click to manage Inventory', '#' %>
+    <%= button_to 'Click to manage Inventory', '#', class: 'inventory-button' %>
   </section>
 
  
