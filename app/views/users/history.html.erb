@@ -1,7 +1,29 @@
+<html>
+<head>
+  <style>
+    a{
+      color: white;
+      text-decoration: none;
+    }
+    body{
+      background: white;
+      color: black;
+    }
+    .birdhouse-image {
+  max-width: 100%;
+  height: 200px; /* Set a fixed height for all images */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+  </style>
+</head>
+<body>
 <h1>Purchase History</h1>
 
 <% @orders.each do |order| %>
   <div>
+    <%= image_tag "birdhouse4.jpg", class: 'birdhouse-image' %>
     <h3>Order ID: <%= order.id %></h3>
     <p>Item: <%= order.items %></p>
     <p>Total cost: <%= order.total_cost %></p>
@@ -10,3 +32,5 @@
     <!-- Other order details -->
   </div>
 <% end %>
+</body>
+</html>

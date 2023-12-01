@@ -6,7 +6,7 @@
 #  items            :string
 #  payment_details  :string
 #  shipping_address :string
-#  total_cost       :integer
+#  total_cost       :decimal(, )
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  user_id          :bigint           not null

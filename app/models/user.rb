@@ -23,6 +23,7 @@ class User < ApplicationRecord
   has_many :questions
   has_many :answers
   has_many :quizzes
+  has_many :orders
 
   def create_cart
     build_cart(shipping_fee: 0, taxes: 0).save
