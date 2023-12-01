@@ -6,7 +6,8 @@
   
 body {
   font-family: Arial, sans-serif;
-  background: black;
+  background: white;
+  color: black;
 }
 
 /* Navigation bar styling */
@@ -36,7 +37,7 @@ nav ul li {
 
 /* Link styling */
 a {
-  color: blue;
+  color: white;
   text-decoration: none;
 }
 
@@ -47,20 +48,18 @@ footer {
 </style>
 </head>
 <body>
-  <header>
-    <!-- Your navigation bar -->
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        
-        <li><%= link_to "Guide", guide_path() %></li>
-        
-        <li><%= link_to "Community", community_path() %></li>
-        <li><a href="/aboutus">About Us</a></li>
-      </ul>
-    </nav>
-  </header>
+ <p></p>
+<p>
+Welcome to our Birdhouse Compatibility Guide! This fun and informative quiz is designed to help you find the perfect teapot birdhouse for your garden. Whether you're a seasoned bird enthusiast or new to birdwatching, our quiz makes it easy and enjoyable to select a birdhouse that's just right for you.</p>
 
+<p>Here's how it works:</p>
+
+<p>- You'll answer a few simple questions about your local climate, the types of birds you'd like to attract, and your personal style preferences.</p>
+<p>- Based on your answers, we'll recommend teapot birdhouse designs that are not only beautiful but also perfect for the birds in your area.</p>
+<p>- You'll get insights on the best placement for your birdhouse to create a welcoming environment for your feathered friends.</p>
+
+<p>So, are you ready to find your ideal birdhouse? Let's get started with the quiz! 🐦🏡✨
+</p>
 <%= link_to 'Start Quiz', new_quiz_path, class: 'button' %>
 </head>
 </html>

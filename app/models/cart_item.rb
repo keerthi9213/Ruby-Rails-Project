@@ -33,6 +33,6 @@ class CartItem < ApplicationRecord
   private
 
   def set_defaults
-    self.quantity ||= 1
+    self.quantity ||= 0
   end
 end
