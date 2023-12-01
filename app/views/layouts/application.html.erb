@@ -126,7 +126,7 @@
         <li><a href="/">Home</a></li>
         <li><%= link_to "Listings", listings_path %></li>
         <li><%= link_to "Guide", guide_path %></li>
-        <li><a href="/customization">Customization</a></li>
+        <li><%= link_to "Customization", '#' %></li>
         <li><%= link_to "Gallery", gallery_path %></li>
         <li><%= link_to "About Us", aboutus_path %></li>
       </ul>
@@ -135,7 +135,7 @@
       <% if user_signed_in? %>
         <div class="user-info">
           <!-- Cart icon -->
-          <%= link_to image_tag('cart.jpg', alt: 'Cart', height: '24'), class: 'nav-link' %>
+          <%= link_to image_tag('cart.jpg', alt: 'Cart', height: '24'), cart_path, class: 'nav-link' %>
           <!-- Profile image 
           <%= link_to image_tag('profile.jpg', alt: 'Profile', height: '24'), class: 'nav-link' %>-->
           <div class="dropdown">

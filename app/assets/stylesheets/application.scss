@@ -31,9 +31,13 @@ main {
   padding-left: $alert-dismissible-padding-r;
 }
 
-a{
+.navbar-nav a{
   color: white;
   text-decoration: none;
+}
+
+main a{
+  color: black;
 }
 
 body{
