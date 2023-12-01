@@ -22,12 +22,15 @@ Rails.application.routes.draw do
   get 'home/listings/:id', to: 'birdhouse#listings_show', as: 'listings_show'
   post 'home/listings/:id/add_to_cart', to: 'cart#add', as: 'add_to_cart'
   get 'home/cart', to: 'cart#cart', as: 'cart'
+  get 'home/cart/:id', to: 'cart#buy', as: 'buy_now'
   get 'home/aboutus', to: 'home#aboutus', as: 'aboutus'
   # Devise routes for user sign-in, sign-up, sign-out, etc.
   devise_for :users
 
   get 'home/guide/quiz', to: 'quizzes#new', as: 'new_quiz'
   post 'home/guide/quiz', to: 'quizzes#create', as: 'create_quiz'
+
+  get 'history', to: 'users#history', as: 'history'
 
   resources :questions, only: [:create, :show] do
     resources :answers, only: [:create]

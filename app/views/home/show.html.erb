@@ -8,7 +8,7 @@
   /* General body styling */
 body {
   font-family: Arial, sans-serif;
-  background: #FFFDD0;
+  background: white;
   color: black;
 }
 
@@ -32,31 +32,22 @@ a {
   color: white;
   text-decoration: none;
 }
-b {
-  color: black;
-}
 
-/* Footer styling */
-footer {
-  margin-top: 20px;
-}
+
 </style>
 </head>
 <body>
-  
+  <div style = "background-image: url('/assets/homebg.png');height: 605px;background-position: center;background-repeat: no-repeat;background-size: cover; ">
 
   <section class="intro">
     <h1>Teapot Birdhouses</h1>
     <p>
       Teapot Birdhouses is a magical place where the marvels of nature and creative expression collide. Discover a wide variety of distinctive teapot birdhouse designs, customize them to your liking, and turn your garden into a bird's paradise. Our Birdhouse Compatibility Guide offers current environmental data and professional recommendations for thoughtful birdhouse installation, with an emphasis on blending seamlessly into your garden's existing ecosystem. Our selection prioritizes choice and quality. Take part in a birdwatching expedition, welcome to Teapot Birdhouses, where the beautiful songs of the birds bring your garden to life.
     </p>
-    <a href="/inventory">Click to manage Inventory</a>
+
+    <%= button_to 'Click to manage Inventory', '#' %>
   </section>
 
- 
-
-  <footer>
-    <!-- Your footer here -->
-  </footer>
+ </div>
 </body>
 </html>
