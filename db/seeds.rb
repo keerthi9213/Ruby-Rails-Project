@@ -50,7 +50,7 @@ answer2 = Answer.create!(
 birdhouses = Birdhouse.create([
   {
     Material: 'Ceramic',
-    Color: 'Blue',
+    Color: 'Brown',
     Style: 'Vintage',
     Roof_design: 'Classic Teapot Lid',
     Size: 'M',
@@ -59,7 +59,7 @@ birdhouses = Birdhouse.create([
   },
   {
     Material: 'Stoneware',
-    Color: 'Green',
+    Color: 'Silver',
     Style: 'Modern',
     Roof_design: 'Sleek Round Lid',
     Size: 'S',
@@ -68,7 +68,7 @@ birdhouses = Birdhouse.create([
   },
   {
     Material: 'Wood',
-    Color: 'Red',
+    Color: 'white',
     Style: 'Rustic',
     Roof_design: 'Pitched Barn Roof',
     Size: 'L',
@@ -76,13 +76,85 @@ birdhouses = Birdhouse.create([
     Price: 39.99
   },
   {
-    Material: 'Glass',
-    Color: 'Clear',
+    Material: 'Ceramic',
+    Color: 'White',
     Style: 'Contemporary',
     Roof_design: 'Smooth Dome Lid',
     Size: 'XL',
     Artistic_detail: 'Stained Glass Panels',
     Price: 69.99
+  },
+  {
+    Material: 'Stoneware',
+    Color: 'Brown',
+    Style: 'Contemporary',
+    Roof_design: 'Classic Teapot Lid',
+    Size: 'L',
+    Artistic_detail: 'Hand-painted floral design',
+    Price: 59.99
+  },
+  {
+    Material: 'Wood',
+    Color: 'Silver',
+    Style: 'Modern',
+    Roof_design: 'Classic Teapot Lid',
+    Size: 'S',
+    Artistic_detail: 'Abstract Geometric Patterns',
+    Price: 59.99
+  },
+  {
+    Material: 'Wood',
+    Color: 'White',
+    Style: 'Rustic',
+    Roof_design: 'Pitched Barn Roof',
+    Size: 'L',
+    Artistic_detail: 'Abstract Geometric Patterns',
+    Price: 34.99
+  },
+  {
+    Material: 'Ceramic',
+    Color: 'White',
+    Style: 'Vintage',
+    Roof_design: 'Smooth Dome Lid',
+    Size: 'M',
+    Artistic_detail: 'Stained Glass Panels',
+    Price: 64.99
+  },
+  {
+    Material: 'Ceramic',
+    Color: 'Brown',
+    Style: 'Modern',
+    Roof_design: 'Classic Teapot Lid',
+    Size: 'M',
+    Artistic_detail: 'Abstract Geometric Patterns',
+    Price: 44.99
+  },
+  {
+    Material: 'Stoneware',
+    Color: 'Silver',
+    Style: 'Rustic',
+    Roof_design: 'Sleek Round Lid',
+    Size: 'S',
+    Artistic_detail: 'Carved Wood Details',
+    Price: 59.49
+  },
+  {
+    Material: 'Wood',
+    Color: ' Brown',
+    Style: 'Contemporary',
+    Roof_design: 'Smooth Dome Lid',
+    Size: 'XL',
+    Artistic_detail: 'Carved Wood Details',
+    Price: 39.49
+  },
+  {
+    Material: 'Ceramic',
+    Color: 'White',
+    Style: 'Vintage',
+    Roof_design: 'Smooth Dome Lid',
+    Size: 'XL',
+    Artistic_detail: 'Stained Glass Panels',
+    Price: 65.49
   }
 ])
 
