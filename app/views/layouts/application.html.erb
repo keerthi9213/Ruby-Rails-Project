@@ -78,6 +78,32 @@
     .navbar-nav li {
       margin-right: 20px; /* Space between nav items */
     }
+    /* Add styles for dropdown */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .dropdown:hover .dropbtn {
+      background-color: #3e8e41;
+    }
   </style>
 </head>
 <body>
@@ -94,7 +120,7 @@
         <li><%= link_to "Guide", guide_path %></li>
         <li><a href="/customization">Customization</a></li>
         <li><%= link_to "Gallery", gallery_path %></li>
-        <li><a href="/about">About Us</a></li>
+        <li><%= link_to "About Us", aboutus_path %></li>
       </ul>
     </nav>
     <nav>  
@@ -102,11 +128,35 @@
         <div class="user-info">
           <!-- Cart icon -->
           <%= link_to image_tag('cart.jpg', alt: 'Cart', height: '24'), class: 'nav-link' %>
-          <!-- Profile image -->
-          <%= link_to image_tag('profile.jpg', alt: 'Profile', height: '24'), class: 'nav-link' %>
+          <!-- Profile image 
+          <%= link_to image_tag('profile.jpg', alt: 'Profile', height: '24'), class: 'nav-link' %>-->
+          <div class="dropdown">
+          <div class="dropbtn">
+            <%= image_tag('profile.jpg', alt: 'Profile', height: '24') %>
+          </div>
+          <div class="dropdown-content">
+            <%= link_to 'History', history_path %>
+            <%= link_to 'Manage account', '#' %>
+            <%= link_to 'Settings', '#' %>
+            
+            <!--<%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link', data: { turbo: false } %>-->
+          </div>
+        </div>
           <span>Hi, <%= current_user.email %></span>
           <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link', data: { turbo: false } %>
         </div>
+        <!--<div class="dropdown">
+          <div class="dropbtn">
+            <%= image_tag('profile.jpg', alt: 'Profile', height: '24') %>
+          </div>
+          <div class="dropdown-content">
+            <%= link_to 'History', history_path %>
+            <%= link_to 'Manage account', '#' %>
+            <%= link_to 'Settings', '#' %>
+            
+            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link', data: { turbo: false } %>
+          </div>
+        </div>-->
       <% else %>
         <%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %>
         <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
