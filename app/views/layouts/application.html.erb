@@ -43,6 +43,14 @@
       display: flex;
       align-items: center;
     }
+    .nav-button{
+      background-color: #4CAF50; 
+      color: white;
+      padding: 10px 20px; 
+      border: none; 
+      border-radius: 5px; 
+      cursor: pointer;
+    }
     .nav-link:hover {
       text-decoration: underline;
       height: 24;
@@ -118,7 +126,7 @@
         <li><a href="/">Home</a></li>
         <li><%= link_to "Listings", listings_path %></li>
         <li><%= link_to "Guide", guide_path %></li>
-        <li><a href="/customization">Customization</a></li>
+        <li><%= link_to "Customization", '#' %></li>
         <li><%= link_to "Gallery", gallery_path %></li>
         <li><%= link_to "About Us", aboutus_path %></li>
       </ul>
@@ -128,12 +136,9 @@
         <div class="user-info">
           <!-- Cart icon -->
           <%= link_to image_tag('cart.jpg', alt: 'Cart', height: '24'), cart_path, class: 'nav-link' %>
-          <!-- Profile image -->
-          <%= link_to image_tag('profile.jpg', alt: 'Profile', height: '24'), class: 'nav-link' %>
-          <span>Hi, <%= current_user.email %></span>
-          <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link', data: { turbo: false } %>
-        </div>
-        <!--<div class="dropdown">
+          <!-- Profile image 
+          <%= link_to image_tag('profile.jpg', alt: 'Profile', height: '24'), class: 'nav-link' %>-->
+          <div class="dropdown">
           <div class="dropbtn">
             <%= image_tag('profile.jpg', alt: 'Profile', height: '24') %>
           </div>
@@ -142,9 +147,12 @@
             <%= link_to 'Manage account', '#' %>
             <%= link_to 'Settings', '#' %>
             
-            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link', data: { turbo: false } %>
+            <!--<%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link', data: { turbo: false } %>-->
           </div>
-        </div>-->
+        </div>
+          <span>Hi, <%= current_user.email %></span>
+          <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-button', data: { turbo: false } %>
+        </div>
       <% else %>
         <%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %>
         <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
