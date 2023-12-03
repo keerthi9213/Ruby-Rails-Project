@@ -36,4 +36,12 @@ Rails.application.routes.draw do
     resources :answers, only: [:create]
   end
 
+  resources :orders, only: [:new, :create, :show]
+
+  get 'checkout', to: 'orders#new', as: 'checkout'
+  post 'checkout', to: 'orders#create'
+  get 'orders/:id', to: 'orders#show', as: 'order_confirmation'
+  get '/thank_you', to: 'orders#thank_you', as: 'thank_you'
+
+
 end

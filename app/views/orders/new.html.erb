@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <h3>Complete Purchase</h3>
+        <style>
+            .field{
+                background: white;
+            }
+        </style>
+    </head>
+    <body>
+        <%= form_for @order, url: orders_path do |f| %>
+        <!-- Shipping Information Fields -->
+        <div class="field">
+            <%= f.label :shipping_address %>
+            <%= f.text_area :shipping_address, required: true, style: 'background-color: white; color: black' %>
+        </div>
+
+        <div class="field">
+            <%= f.label :total_cost %>
+            <%= f.number_field :total_cost, value: 20.00, required: true, readonly: true, style: 'background-color: white; color: black ' %>
+        </div>
+        <!-- Simulated Payment Information -->
+        <div class="field">
+            <%= f.label :card_number, "Credit Card Number" %>
+            <%= f.text_field :card_number, placeholder: '1234 5678 9012 3456', style: 'background-color: white; color: black'  %>
+        </div>
+
+        <div class="field">
+            <%= f.label :card_expiry, "Expiry Date" %>
+            <%= f.text_field :card_expiry, placeholder: 'MM/YY', style: 'background-color: white; color: black'  %>
+        </div>
+
+        <div class="field">
+            <%= f.label :card_cvv, "CVV" %>
+            <%= f.text_field :card_cvv, placeholder: '123', style: 'background-color: white; color: black'  %>
+        </div>
+
+        <div class="field">
+            <%= f.label :cardholder_name, "Cardholder Name" %>
+            <%= f.text_field :cardholder_name, placeholder: 'Name', style: 'background-color: white; color: black'  %>
+        </div>
+
+        <%= f.submit "Place Order", id: "submit-button" %>
+        <% end %>
+    </body>
+</html>
+

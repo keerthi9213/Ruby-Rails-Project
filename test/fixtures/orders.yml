@@ -3,6 +3,10 @@
 # Table name: orders
 #
 #  id               :bigint           not null, primary key
+#  card_cvv         :integer
+#  card_expiry      :string
+#  card_number      :bigint
+#  cardholder_name  :string
 #  items            :string
 #  payment_details  :string
 #  shipping_address :string
