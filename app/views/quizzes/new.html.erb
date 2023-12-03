@@ -9,6 +9,14 @@ body{
   background: white;
   color: black;
 }
+.finish-quiz-btn{
+  background-color: #4CAF50; 
+  color: white;
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer;
+}
 
 </style>
 </head>
@@ -39,7 +47,7 @@ body{
     <!--<%= form.label :species, 'What are the species?' %>-->
     <%= form.text_field :species %>
   </div>
-  <%= form.submit "Finish quiz"%>
+  <%= form.submit "Finish quiz", class: "finish-quiz-btn"%>
 <%end%>
 </body>
 </html>
