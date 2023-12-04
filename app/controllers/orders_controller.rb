@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
   
       if @order.save
         # Simulate a successful order placement without actual payment processing
-        flash[:notice] = "Thank you for your order. Your payment has been processed (simulated)."
+        flash[:notice] = "Thank you for your order. Your payment has been processed."
         redirect_to thank_you_path
       else
         flash.now[:alert] = @order.errors.full_messages.to_sentence

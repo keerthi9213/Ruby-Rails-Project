@@ -25,6 +25,9 @@
 #
 class Order < ApplicationRecord
   belongs_to :user
-  validates :shipping_address, presence: true
-  validates :total_cost, numericality: { greater_than_or_equal_to: 0 }
+  validates :shipping_address, :card_number, :card_expiry, :card_cvv, :cardholder_name, presence: true
+  validates :total_cost, numericality: true
+  validates :card_number, format: { with: /\A\d{16}\z/, message: "must be 16 digits" }
+  validates :card_cvv, format: { with: /\A\d{3,4}\z/, message: "must be 3 or 4 digits" }
+
 end
