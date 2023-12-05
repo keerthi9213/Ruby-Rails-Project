@@ -1,8 +1,19 @@
 class BirdhouseController < ApplicationController
+    
     def listings
         @birdhouses = Birdhouse.all
-        # Additional logic for filtering/sorting can be added here
-    end
+
+        if params[:material].present?
+            @birdhouses = @birdhouses.where("material = ?", params[:material])
+        end
+        if params[:roof_design].present?
+            @birdhouses = @birdhouses.where("roof_design = ?", params[:roof_design])
+        end
+        if params[:size].present?
+            @birdhouses = @birdhouses.where("size = ?", params[:size])
+        end
+
+    end 
     def listings_show
         @birdhouse = Birdhouse.find(params[:id])
     end

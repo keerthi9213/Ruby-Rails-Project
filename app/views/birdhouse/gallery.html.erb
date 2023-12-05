@@ -4,7 +4,7 @@
   <% @birdhouses.each do |birdhouse| %>
     <div class="gallery-item">
       <%= image_tag "birdhouse#{birdhouse.id}.jpg", class: 'birdhouse-image' %>
-      <p class="birdhouse-style"><%= birdhouse.Style.capitalize %></p>
+      <p class="birdhouse-style"><%= birdhouse.style.capitalize %></p>
       <p class="birdhouse-likes">Likes: <%= birdhouse.likes %></p>
       <%= button_to 'Upvote', upvote_birdhouse_path(birdhouse), method: :put, class: 'upvote-button'%>
     </div>

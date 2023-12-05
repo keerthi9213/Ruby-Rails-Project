@@ -14,8 +14,8 @@
     .container {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
-      justify-content: space-between;
+      gap: 0;
+      justify-content: flex-start;
     }
     .birdhouse-item {
       border: 1px solid #ccc;
@@ -45,18 +45,20 @@
       display: inline-block;
     }
     .apply-filters {
-      background-color: #28a745;
+      background-color: #28a745; /* Green color */
+    
     }
     .select-button:hover, .apply-filters:hover {
       filter: brightness(90%);
     }
     .birdhouse-image {
-  max-width: 100%;
-  height: 200px; /* Set a fixed height for all images */
-  object-fit: cover; /* Maintain aspect ratio and cover the container */
-  border-bottom: 1px solid #eee;
-  margin-bottom: 20px;
-}
+      max-width: 100%;
+      height: 200px; /* Set a fixed height for all images */
+      object-fit: cover; /* Maintain aspect ratio and cover the container */
+      border-bottom: 1px solid #eee;
+      margin-bottom: 20px;
+    }
+    
     a {
       color: white;
       text-decoration: none;
@@ -64,19 +66,75 @@
   </style>
 </head>
 <body>
-<%= link_to 'Apply filters', '#', class: 'apply-filters' %>
-<div class="container">
-  <% @birdhouses.each do |birdhouse| %>
-    <div class="birdhouse-item">
-      <%= image_tag "birdhouse#{birdhouse.id}.jpg", class: 'birdhouse-image' %>
-      <div class="birdhouse-details">
-        
-        <p class="price">$<%= '%.2f' % birdhouse.Price %></p>
-        <%= link_to "Select", listings_show_path(birdhouse), class: 'select-button' %>
-      </div>
+
+
+
+
+<body>
+
+<%= button_to 'Apply Filters', '#', id: 'filter-toggle', class: 'apply-filters', remote: true %>
+
+<div id="filter-form" style="display: none;">
+  <%= form_tag(listings_path, method: :get, id: "filters-form", remote: true) do %>
+    <div class="form-group">
+      <%= label_tag :material, 'material:' %>
+      <%= select_tag :material, options_for_select(['Ceramic', 'Wood', 'Stoneware'], params[:material]), include_blank: true %>
     </div>
+
+    <div class="form-group">
+      <%= label_tag :roof_design, 'Roof design:' %>
+      <%= select_tag :roof_design, options_for_select(['Classic Teapot Lid', 'Sleek Round Lid', 'Pitched Barn Roof', 'Smooth Dome Lid'], params[:roof_design]), include_blank: true %>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :size, 'size:' %>
+      <%= select_tag :size, options_for_select(['S', 'M', 'L', 'XL'], params[:size]), include_blank: true %>
+    </div>
+
+    <%= submit_tag 'Apply', class: 'btn btn-success' %>
   <% end %>
 </div>
+
+<%= content_tag :div, id: 'listings' do %>
+  <%# Code to display birdhouses goes here %>
+<% end %>
+
+<script>
+  // This script will toggle the display of the filter form
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButton = document.getElementById('filter-toggle');
+    const filterForm = document.getElementById('filter-form');
+
+    filterButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      filterForm.style.display = filterForm.style.display === 'none' ? '' : 'none';
+    });
+  });
+</script>
+
+
+<div class="container">
+  <% if @birdhouses.empty? %>
+    <h3>OOPs !! No products are available based on your filter</h3>
+    
+  <% else %>
+    <% @birdhouses.each do |birdhouse| %>
+      <div class="birdhouse-item">
+        <%= image_tag "birdhouse#{birdhouse.id}.jpg", class: 'birdhouse-image' %>
+        <div class="birdhouse-details">
+          <p class="price">$<%= '%.2f' % birdhouse.price %></p>
+          <%= link_to "Select", listings_show_path(birdhouse), class: 'select-button' %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+</body>
+</html>
+
+
+
 
 </body>
 </html>

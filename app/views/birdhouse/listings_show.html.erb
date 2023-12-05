@@ -101,13 +101,13 @@
 <div class="birdhouse-card">
   <%= image_tag "birdhouse#{params[:id]}.jpg", alt: "Birdhouse Image", class: 'birdhouse-image' %>
   <div class="info">
-    <h3><%= @birdhouse.Style %> Birdhouse</h3>
-    <p><strong>Material:</strong> <%= @birdhouse.Material %></p>
-    <p><strong>Color:</strong> <%= @birdhouse.Color %></p>
-    <p><strong>Roof Design:</strong> <%= @birdhouse.Roof_design %></p>
-    <p><strong>Size:</strong> <%= @birdhouse.Size %></p>
-    <p><strong>Artistic Detail:</strong> <%= @birdhouse.Artistic_detail %></p>
-    <p class="price">$<%= '%.2f' % @birdhouse.Price %></p>
+    <h3><%= @birdhouse.style %> Birdhouse</h3>
+    <p><strong>material:</strong> <%= @birdhouse.material %></p>
+    <p><strong>color:</strong> <%= @birdhouse.color %></p>
+    <p><strong>roof Design:</strong> <%= @birdhouse.roof_design %></p>
+    <p><strong>size:</strong> <%= @birdhouse.size %></p>
+    <p><strong>artistic Detail:</strong> <%= @birdhouse.artistic_details %></p>
+    <p class="price">$<%= '%.2f' % @birdhouse.price %></p>
     
     <%= link_to 'Buy now',
             buy_now_path(id: @birdhouse.id),
