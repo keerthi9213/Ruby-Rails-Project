@@ -6,6 +6,7 @@ import "@popperjs/core"
 import Rails from "@rails/ujs"
 import autosize from "autosize"
 import "bootstrap"
+
 Rails.start()
 
 document.addEventListener("turbo:load", () => {

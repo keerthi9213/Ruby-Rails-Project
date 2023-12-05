@@ -1,5 +1,6 @@
 class BirdhouseController < ApplicationController
-    
+    before_action :authenticate_user!
+    before_action :check_if_vendor, only: [:inventory]
     def listings
         @birdhouses = Birdhouse.all
 
@@ -22,6 +23,14 @@ class BirdhouseController < ApplicationController
         @birdhouses = Birdhouse.all
     end
 
+    def index
+        @birdhouses = Birdhouse.all
+    end
+
+    def inventory
+        @birdhouses = Birdhouse.all
+    end
+    
     def upvote
         birdhouse = Birdhouse.find(params[:id])
         # Here you would increase the likes count and save the birdhouse
@@ -30,4 +39,13 @@ class BirdhouseController < ApplicationController
         # For the simulation, we're just redirecting back to the gallery
         redirect_to gallery_path, notice: 'You have upvoted a birdhouse!'
     end
+
+    private
+
+    def check_if_vendor
+        unless current_user.role?
+        redirect_to listings_path, alert: "You are not authorized to view inventory page."
+        end
+    end
+
 end
