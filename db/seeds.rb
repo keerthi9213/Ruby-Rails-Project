@@ -78,7 +78,7 @@ birdhouses = Birdhouse.create([
     material: 'Wood',
     color: 'white',
     style: 'Rustic',
-    roof_design: 'Pitched Barn Roof',
+    roof_design: 'Pitched Barn roof',
     size: 'L',
     artistic_details: 'Carved Wood Details',
     price: 39.99
@@ -114,7 +114,7 @@ birdhouses = Birdhouse.create([
     material: 'Wood',
     color: 'White',
     style: 'Rustic',
-    roof_design: 'Pitched Barn Roof',
+    roof_design: 'Pitched Barn roof',
     size: 'L',
     artistic_details: 'Abstract Geometric Patterns',
     price: 34.99

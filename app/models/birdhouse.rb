@@ -8,6 +8,7 @@
 #  likes            :integer          default(10)
 #  material         :string
 #  price            :decimal(, )
+#  quantity         :integer          default(5)
 #  roof_design      :string
 #  size             :string
 #  style            :string
