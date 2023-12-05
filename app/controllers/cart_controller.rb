@@ -41,7 +41,7 @@ class CartController < ApplicationController
       
       # You can set default values or retrieve them from a method or database
       @shipping_fee = @cart.shipping_fee || 5.99 # Default shipping fee
-      @taxes = @cart.taxes || (@cart.cart_items.sum { |item| item.quantity * item.birdhouse.Price } * 0.08) # Default tax rate
+      @taxes = @cart.taxes || (@cart.cart_items.sum { |item| item.quantity * item.birdhouse.price } * 0.08) # Default tax rate
       
       # Ensure the shipping fee and taxes are saved if they are default values
       if @cart.shipping_fee.nil? || @cart.taxes.nil?
@@ -49,7 +49,7 @@ class CartController < ApplicationController
       end
       
       # Calculate the total price of items
-      item_total = @cart.cart_items.sum { |item| item.quantity * item.birdhouse.Price }
+      item_total = @cart.cart_items.sum { |item| item.quantity * item.birdhouse.price }
       
       # Calculate the total price including shipping fee and taxes
       @total_price = item_total + 5.99 + 3.99

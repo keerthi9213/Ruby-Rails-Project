@@ -57,112 +57,112 @@ answer2 = Answer.create!(
 # Seed the Birdhouse table with sample data
 birdhouses = Birdhouse.create([
   {
-    Material: 'Ceramic',
-    Color: 'Brown',
-    Style: 'Vintage',
-    Roof_design: 'Classic Teapot Lid',
-    Size: 'M',
-    Artistic_detail: 'Hand-painted floral design',
-    Price: 49.99
+    material: 'Ceramic',
+    color: 'Brown',
+    style: 'Vintage',
+    roof_design: 'Classic Teapot Lid',
+    size: 'M',
+    artistic_details: 'Hand-painted floral design',
+    price: 49.99
   },
   {
-    Material: 'Stoneware',
-    Color: 'Silver',
-    Style: 'Modern',
-    Roof_design: 'Sleek Round Lid',
-    Size: 'S',
-    Artistic_detail: 'Abstract Geometric Patterns',
-    Price: 59.99
+    material: 'Stoneware',
+    color: 'Silver',
+    style: 'Modern',
+    roof_design: 'Sleek Round Lid',
+    size: 'S',
+    artistic_details: 'Abstract Geometric Patterns',
+    price: 59.99
   },
   {
-    Material: 'Wood',
-    Color: 'white',
-    Style: 'Rustic',
-    Roof_design: 'Pitched Barn Roof',
-    Size: 'L',
-    Artistic_detail: 'Carved Wood Details',
-    Price: 39.99
+    material: 'Wood',
+    color: 'white',
+    style: 'Rustic',
+    roof_design: 'Pitched Barn roof',
+    size: 'L',
+    artistic_details: 'Carved Wood Details',
+    price: 39.99
   },
   {
-    Material: 'Ceramic',
-    Color: 'White',
-    Style: 'Contemporary',
-    Roof_design: 'Smooth Dome Lid',
-    Size: 'XL',
-    Artistic_detail: 'Stained Glass Panels',
-    Price: 69.99
+    material: 'Ceramic',
+    color: 'White',
+    style: 'Contemporary',
+    roof_design: 'Smooth Dome Lid',
+    size: 'XL',
+    artistic_details: 'Stained Glass Panels',
+    price: 69.99
   },
   {
-    Material: 'Stoneware',
-    Color: 'Brown',
-    Style: 'Contemporary',
-    Roof_design: 'Classic Teapot Lid',
-    Size: 'L',
-    Artistic_detail: 'Hand-painted floral design',
-    Price: 59.99
+    material: 'Stoneware',
+    color: 'Brown',
+    style: 'Contemporary',
+    roof_design: 'Classic Teapot Lid',
+    size: 'L',
+    artistic_details: 'Hand-painted floral design',
+    price: 59.99
   },
   {
-    Material: 'Wood',
-    Color: 'Silver',
-    Style: 'Modern',
-    Roof_design: 'Classic Teapot Lid',
-    Size: 'S',
-    Artistic_detail: 'Abstract Geometric Patterns',
-    Price: 59.99
+    material: 'Wood',
+    color: 'Silver',
+    style: 'Modern',
+    roof_design: 'Classic Teapot Lid',
+    size: 'S',
+    artistic_details: 'Abstract Geometric Patterns',
+    price: 59.99
   },
   {
-    Material: 'Wood',
-    Color: 'White',
-    Style: 'Rustic',
-    Roof_design: 'Pitched Barn Roof',
-    Size: 'L',
-    Artistic_detail: 'Abstract Geometric Patterns',
-    Price: 34.99
+    material: 'Wood',
+    color: 'White',
+    style: 'Rustic',
+    roof_design: 'Pitched Barn roof',
+    size: 'L',
+    artistic_details: 'Abstract Geometric Patterns',
+    price: 34.99
   },
   {
-    Material: 'Ceramic',
-    Color: 'White',
-    Style: 'Vintage',
-    Roof_design: 'Smooth Dome Lid',
-    Size: 'M',
-    Artistic_detail: 'Stained Glass Panels',
-    Price: 64.99
+    material: 'Ceramic',
+    color: 'White',
+    style: 'Vintage',
+    roof_design: 'Smooth Dome Lid',
+    size: 'M',
+    artistic_details: 'Stained Glass Panels',
+    price: 64.99
   },
   {
-    Material: 'Ceramic',
-    Color: 'Brown',
-    Style: 'Modern',
-    Roof_design: 'Classic Teapot Lid',
-    Size: 'M',
-    Artistic_detail: 'Abstract Geometric Patterns',
-    Price: 44.99
+    material: 'Ceramic',
+    color: 'Brown',
+    style: 'Modern',
+    roof_design: 'Classic Teapot Lid',
+    size: 'M',
+    artistic_details: 'Abstract Geometric Patterns',
+    price: 44.99
   },
   {
-    Material: 'Stoneware',
-    Color: 'Silver',
-    Style: 'Rustic',
-    Roof_design: 'Sleek Round Lid',
-    Size: 'S',
-    Artistic_detail: 'Carved Wood Details',
-    Price: 59.49
+    material: 'Stoneware',
+    color: 'Silver',
+    style: 'Rustic',
+    roof_design: 'Sleek Round Lid',
+    size: 'S',
+    artistic_details: 'Carved Wood Details',
+    price: 59.49
   },
   {
-    Material: 'Wood',
-    Color: ' Brown',
-    Style: 'Contemporary',
-    Roof_design: 'Smooth Dome Lid',
-    Size: 'XL',
-    Artistic_detail: 'Carved Wood Details',
-    Price: 39.49
+    material: 'Wood',
+    color: ' Brown',
+    style: 'Contemporary',
+    roof_design: 'Smooth Dome Lid',
+    size: 'XL',
+    artistic_details: 'Carved Wood Details',
+    price: 39.49
   },
   {
-    Material: 'Ceramic',
-    Color: 'White',
-    Style: 'Vintage',
-    Roof_design: 'Smooth Dome Lid',
-    Size: 'XL',
-    Artistic_detail: 'Stained Glass Panels',
-    Price: 65.49
+    material: 'Ceramic',
+    color: 'White',
+    style: 'Vintage',
+    roof_design: 'Smooth Dome Lid',
+    size: 'XL',
+    artistic_details: 'Stained Glass Panels',
+    price: 65.49
   }
 ])
 

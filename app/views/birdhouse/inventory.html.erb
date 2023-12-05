@@ -80,7 +80,7 @@
                     <%= image_tag "birdhouse#{birdhouse.id}.jpg", class: 'birdhouse-image' %>
                     <div class="birdhouse-details">
                         <p class="price"> Quantity: <%= birdhouse.quantity %></p>
-                        <p class="price">$<%= '%.2f' % birdhouse.Price %></p>
+                        <p class="price">$<%= '%.2f' % birdhouse.price %></p>
                         <%= link_to "Select", listings_show_path(birdhouse), class: 'select-button' %>
                         <%= link_to 'Edit', 'edit_birdhouse_path(birdhouse)', class: 'select-button' %> 
                         <%= link_to 'Delete', birdhouse, method: :delete, data: { confirm: 'Are you sure?' }, class: 'select-button' %>
