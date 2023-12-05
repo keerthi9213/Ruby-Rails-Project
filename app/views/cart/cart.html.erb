@@ -36,7 +36,7 @@
             <p>Unit Price: <%= number_to_currency(cart_item.birdhouse.Price) %></p>
             <p>Total Price: <span id="item-total-<%= cart_item.id %>"><%= number_to_currency(cart_item.quantity * cart_item.birdhouse.Price) %></span></p>
             
-            <%= link_to 'Remove', remove_item_path(), method: :delete, data: { confirm: 'Are you sure?' }, class: 'remove-link' %>
+            <td><%= link_to "Remove", cart_path(), method: :delete, data: { turbo: false } %></td>
 
           </div>
         </div>
