@@ -49,8 +49,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_01_063331) do
 
   create_table "carts", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.decimal "shipping_fee"
-    t.decimal "taxes"
+    t.decimal "shipping_fee", default: "5.99"
+    t.decimal "taxes", default: "3.99"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_carts_on_user_id"
