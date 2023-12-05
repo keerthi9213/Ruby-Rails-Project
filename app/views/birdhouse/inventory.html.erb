@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <h1>Inventory Management</h1>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background: white;
+                color: black;
+                }
+                .container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                justify-content: space-between;
+                }
+                .birdhouse-item {
+                border: 1px solid #ccc;
+                padding: 20px;
+                border-radius: 8px;
+                width: calc(33% - 20px);
+                }
+                .birdhouse-image {
+                    max-width: 100%;
+                    height: auto;
+                    border-bottom: 1px solid #eee;
+                    margin-bottom: 20px;
+                }
+                .birdhouse-details h3 {
+                     margin-top: 0;
+                }
+                .price {
+                    font-weight: bold;
+                }
+                .select-button, .apply-filters {
+                    text-decoration: none;
+                    color: #fff;
+                    background-color: #4CAF50;
+                    padding: 10px 15px;
+                    border-radius: 5px;
+                    margin-top: 10px;
+                    display: inline-block;
+                }
+                .apply-filters {
+                    background-color: #28a745;
+                }
+                .select-button:hover, .apply-filters:hover {
+                    filter: brightness(90%);
+                }
+                .birdhouse-image {
+                    max-width: 100%;
+                    height: 200px; /* Set a fixed height for all images */
+                    object-fit: cover; /* Maintain aspect ratio and cover the container */
+                    border-bottom: 1px solid #eee;
+                    margin-bottom: 20px;
+                    }
+                a {
+                    color: white;
+                    text-decoration: none;
+                }
+                .add-button{
+                    background-color: #4CAF50; 
+                    text-decoration: none;
+                    color: #fff;
+                    padding: 15px 15px;
+                    border-radius: 5px;
+                    margin-top: 10px;
+                    display: inline-block;
+                }
+        </style>
+    </head>
+    <body>
+        <p></p>
+        <%= link_to 'Add New listings', '#', class: 'add-button' %>
+        <div class="container">
+            <% if @birdhouses.present?%>
+                <% @birdhouses.each do |birdhouse| %>
+                    <div class="birdhouse-item">
+                    <%= image_tag "birdhouse#{birdhouse.id}.jpg", class: 'birdhouse-image' %>
+                    <div class="birdhouse-details">
+                        <p class="price"> Quantity: <%= birdhouse.quantity %></p>
+                        <p class="price">$<%= '%.2f' % birdhouse.price %></p>
+                        <%= link_to "Select", listings_show_path(birdhouse), class: 'select-button' %>
+                        <%= link_to 'Edit', 'edit_birdhouse_path(birdhouse)', class: 'select-button' %> 
+                        <%= link_to 'Delete', birdhouse, method: :delete, data: { confirm: 'Are you sure?' }, class: 'select-button' %>
+                    </div>
+                    </div>
+                <% end %>
+                <% else %>
+                    <p> No birdhouses found </p>
+            <% end %>
+        </div>
+        
+    </body>
+</html>

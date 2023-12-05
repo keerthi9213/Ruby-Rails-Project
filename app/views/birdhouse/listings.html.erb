@@ -51,6 +51,14 @@
     .select-button:hover, .apply-filters:hover {
       filter: brightness(90%);
     }
+    .inventory-button{
+      background-color: #4CAF50; 
+      color: white;
+      padding: 10px 20px; 
+      border: none; 
+      border-radius: 5px; 
+      cursor: pointer;
+    }
     .birdhouse-image {
       max-width: 100%;
       height: 200px; /* Set a fixed height for all images */
@@ -82,8 +90,8 @@
     </div>
 
     <div class="form-group">
-      <%= label_tag :roof_design, 'Roof design:' %>
-      <%= select_tag :roof_design, options_for_select(['Classic Teapot Lid', 'Sleek Round Lid', 'Pitched Barn Roof', 'Smooth Dome Lid'], params[:roof_design]), include_blank: true %>
+      <%= label_tag :roof_design, 'roof design:' %>
+      <%= select_tag :roof_design, options_for_select(['Classic Teapot Lid', 'Sleek Round Lid', 'Pitched Barn roof', 'Smooth Dome Lid'], params[:roof_design]), include_blank: true %>
     </div>
 
     <div class="form-group">
@@ -129,7 +137,9 @@
     <% end %>
   <% end %>
 </div>
-
+<% if current_user.role? %>
+  <%= link_to 'Click to manage Inventory', inventory_path, class: 'inventory-button' %>
+<%end%>
 </body>
 </html>
 

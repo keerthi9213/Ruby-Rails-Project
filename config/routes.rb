@@ -3,8 +3,6 @@
 Rails.application.routes.draw do
   get 'quizzes/new'
   get 'quizzes/create'
-  get 'inventory_items/new'
-  get 'inventory_items/create'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -23,6 +21,8 @@ Rails.application.routes.draw do
   post 'home/listings/:id/add_to_cart', to: 'cart#add', as: 'add_to_cart'
   get 'home/cart', to: 'cart#cart', as: 'cart'
   get 'home/cart/:id', to: 'cart#buy', as: 'buy_now'
+  delete 'home/cart/:id', to: 'cart#remove_item'
+
   get 'home/aboutus', to: 'home#aboutus', as: 'aboutus'
   # Devise routes for user sign-in, sign-up, sign-out, etc.
   devise_for :users
@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   patch 'profile', to: 'users#update', as: 'user_profile'
 
   get 'history', to: 'users#history', as: 'history'
+
+  get '/inventory', to: 'birdhouse#inventory', as: 'inventory'
 
   resources :questions, only: [:create, :show] do
     resources :answers, only: [:create]

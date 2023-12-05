@@ -37,12 +37,30 @@ class CartController < ApplicationController
     
     
     def cart
-        @cart = current_user.cart || current_user.create_cart
-        @shipping_fee = @cart.shipping_fee
-        @taxes = @cart.taxes
-        @total_price = @shipping_fee + @taxes
+      @cart = current_user.cart || current_user.create_cart
+      
+      # You can set default values or retrieve them from a method or database
+      @shipping_fee = @cart.shipping_fee || 5.99 # Default shipping fee
+      @taxes = @cart.taxes || (@cart.cart_items.sum { |item| item.quantity * item.birdhouse.price } * 0.08) # Default tax rate
+      
+      # Ensure the shipping fee and taxes are saved if they are default values
+      if @cart.shipping_fee.nil? || @cart.taxes.nil?
+        @cart.update(shipping_fee: @shipping_fee, taxes: @taxes)
+      end
+      
+      # Calculate the total price of items
+      item_total = @cart.cart_items.sum { |item| item.quantity * item.birdhouse.price }
+      
+      # Calculate the total price including shipping fee and taxes
+      @total_price = item_total + 5.99 + 3.99
     end
-
+    
+    
+    def remove_item
+      cart = current_user.cart.find(params[:id])
+      cart.destroy
+      redirect_to cart_path, notice: 'Item was successfully removed from the cart.'
+    end
     
     def set_birdhouse
         @birdhouse = Birdhouse.find(params[:id])

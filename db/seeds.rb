@@ -14,7 +14,8 @@ user1 = User.create!(
   last_name:  'Tom',
   contact_number: '+1123456789',
   email:    'alice@email.com',
-  password: 'password'
+  password: 'password',
+  role: 0
 )
 
 user2 = User.create!(
@@ -22,7 +23,14 @@ user2 = User.create!(
   last_name:  'Tim',
   contact_number: '+1987654321',
   email:    'bob@email.com',
-  password: 'password'
+  password: 'password',
+  role: 0
+)
+
+admin = User.create!(
+  email:    'admin@admin.com',
+  password: 'password',
+  role: 1
 )
 
 question1 = Question.create!(
@@ -76,7 +84,7 @@ birdhouses = Birdhouse.create([
     material: 'Wood',
     color: 'white',
     style: 'Rustic',
-    roof_design: 'Pitched Barn Roof',
+    roof_design: 'Pitched Barn roof',
     size: 'L',
     artistic_details: 'Carved Wood Details',
     price: 39.99
@@ -112,7 +120,7 @@ birdhouses = Birdhouse.create([
     material: 'Wood',
     color: 'White',
     style: 'Rustic',
-    roof_design: 'Pitched Barn Roof',
+    roof_design: 'Pitched Barn roof',
     size: 'L',
     artistic_details: 'Abstract Geometric Patterns',
     price: 34.99
