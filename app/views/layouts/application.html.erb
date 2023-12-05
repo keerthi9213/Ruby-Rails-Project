@@ -142,9 +142,11 @@
           <div class="dropbtn">
             <%= image_tag('profile.jpg', alt: 'Profile', height: '24') %>
           </div>
+
+
           <div class="dropdown-content">
             <%= link_to 'History', history_path %>
-            <%= link_to 'Manage account', '#' %>
+            <%= link_to 'Manage account', edit_user_profile_path %>
             <%= link_to 'Settings', '#' %>
             
             <!--<%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link', data: { turbo: false } %>-->
