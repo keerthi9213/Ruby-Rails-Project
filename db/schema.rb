@@ -35,7 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_01_063331) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "likes", default: 10
-    t.integer "quantity"
+    t.integer "quantity", default: 5
   end
 
   create_table "cart_items", force: :cascade do |t|

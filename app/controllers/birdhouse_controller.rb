@@ -34,7 +34,7 @@ class BirdhouseController < ApplicationController
 
     def check_if_vendor
         unless current_user.role?
-        redirect_to listings_path, alert: "You are not authorized to view this page."
+        redirect_to listings_path, alert: "You are not authorized to view inventory page."
         end
     end
 

@@ -63,8 +63,7 @@ birdhouses = Birdhouse.create([
     Roof_design: 'Classic Teapot Lid',
     Size: 'M',
     Artistic_detail: 'Hand-painted floral design',
-    Price: 49.99,
-    quantity: 2
+    Price: 49.99
   },
   {
     Material: 'Stoneware',
@@ -73,8 +72,7 @@ birdhouses = Birdhouse.create([
     Roof_design: 'Sleek Round Lid',
     Size: 'S',
     Artistic_detail: 'Abstract Geometric Patterns',
-    Price: 59.99,
-    quantity: 2
+    Price: 59.99
   },
   {
     Material: 'Wood',
@@ -83,8 +81,7 @@ birdhouses = Birdhouse.create([
     Roof_design: 'Pitched Barn Roof',
     Size: 'L',
     Artistic_detail: 'Carved Wood Details',
-    Price: 39.99,
-    quantity: 2
+    Price: 39.99
   },
   {
     Material: 'Ceramic',
@@ -93,8 +90,7 @@ birdhouses = Birdhouse.create([
     Roof_design: 'Smooth Dome Lid',
     Size: 'XL',
     Artistic_detail: 'Stained Glass Panels',
-    Price: 69.99,
-    quantity: 2
+    Price: 69.99
   },
   {
     Material: 'Stoneware',
@@ -103,8 +99,7 @@ birdhouses = Birdhouse.create([
     Roof_design: 'Classic Teapot Lid',
     Size: 'L',
     Artistic_detail: 'Hand-painted floral design',
-    Price: 59.99,
-    quantity: 2
+    Price: 59.99
   },
   {
     Material: 'Wood',
@@ -113,8 +108,7 @@ birdhouses = Birdhouse.create([
     Roof_design: 'Classic Teapot Lid',
     Size: 'S',
     Artistic_detail: 'Abstract Geometric Patterns',
-    Price: 59.99,
-    quantity: 2
+    Price: 59.99
   },
   {
     Material: 'Wood',
@@ -123,8 +117,7 @@ birdhouses = Birdhouse.create([
     Roof_design: 'Pitched Barn Roof',
     Size: 'L',
     Artistic_detail: 'Abstract Geometric Patterns',
-    Price: 34.99,
-    quantity: 2
+    Price: 34.99
   },
   {
     Material: 'Ceramic',
@@ -133,8 +126,7 @@ birdhouses = Birdhouse.create([
     Roof_design: 'Smooth Dome Lid',
     Size: 'M',
     Artistic_detail: 'Stained Glass Panels',
-    Price: 64.99,
-    quantity: 2
+    Price: 64.99
   },
   {
     Material: 'Ceramic',
@@ -143,8 +135,7 @@ birdhouses = Birdhouse.create([
     Roof_design: 'Classic Teapot Lid',
     Size: 'M',
     Artistic_detail: 'Abstract Geometric Patterns',
-    Price: 44.99,
-    quantity: 2
+    Price: 44.99
   },
   {
     Material: 'Stoneware',
@@ -153,8 +144,7 @@ birdhouses = Birdhouse.create([
     Roof_design: 'Sleek Round Lid',
     Size: 'S',
     Artistic_detail: 'Carved Wood Details',
-    Price: 59.49,
-    quantity: 2
+    Price: 59.49
   },
   {
     Material: 'Wood',
@@ -163,8 +153,7 @@ birdhouses = Birdhouse.create([
     Roof_design: 'Smooth Dome Lid',
     Size: 'XL',
     Artistic_detail: 'Carved Wood Details',
-    Price: 39.49,
-    quantity: 2
+    Price: 39.49
   },
   {
     Material: 'Ceramic',
@@ -173,8 +162,7 @@ birdhouses = Birdhouse.create([
     Roof_design: 'Smooth Dome Lid',
     Size: 'XL',
     Artistic_detail: 'Stained Glass Panels',
-    Price: 65.49,
-    quantity: 2
+    Price: 65.49
   }
 ])
 
