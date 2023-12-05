@@ -27,7 +27,7 @@ class CartItem < ApplicationRecord
   after_initialize :set_defaults, unless: :persisted?
 
   def total_price
-    quantity * birdhouse.price
+    quantity * birdhouse.Price
   end
  
   private

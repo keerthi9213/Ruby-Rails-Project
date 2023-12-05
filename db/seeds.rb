@@ -11,12 +11,20 @@
 
 user1 = User.create!(
   email:    'alice@email.com',
-  password: 'password'
+  password: 'password',
+  role: 0
 )
 
 user2 = User.create!(
   email:    'bob@email.com',
-  password: 'password'
+  password: 'password',
+  role: 0
+)
+
+admin = User.create!(
+  email:    'admin@admin.com',
+  password: 'password',
+  role: 1
 )
 
 question1 = Question.create!(
