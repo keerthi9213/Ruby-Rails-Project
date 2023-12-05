@@ -66,12 +66,15 @@
                     </div>
 
                     <div class="field">
-                        <%= form.number_field :total_cost, value: 20.00, required: true, readonly: true, style: 'width: 100px' %>
+                        <%= form.number_field :total_cost, value: params[:total_price], required: true, readonly: true, style: 'width: 100px' %>
                     </div>
                     <p>PAYMENT DETAILS</p>
                     <!-- Simulated Payment Information -->
                     <div class="field">
                         <%= form.text_field :cardholder_name, placeholder: 'Name', required: true, style: 'width: 400px' %>
+                    </div>
+                    <div class="field">
+                        <%= form.select :card_type, [['Visa', 'VISA'], ['MasterCard', 'MC'], ['American Express', 'AMEX']], {}, required: true, style: 'width: 200px;' %>
                     </div>
                     <div class="expiry-cvv-container">
                         <div class="field">

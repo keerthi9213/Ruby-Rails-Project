@@ -51,7 +51,7 @@
   <p>Taxes: 3.99 </p>
   <strong>Total Price (Including Shipping and Taxes):</strong>
   <span id="cart-total"><%= number_to_currency(@total_price) %></span>
-  <%= link_to 'Proceed to Checkout', '#', class: 'btn btn-primary' %>
+  <%= link_to 'Proceed to Checkout', checkout_path(total_price: @total_price), class: 'btn btn-primary' %>
 </div> 
   <% else %>
     <p>Your cart is currently empty.</p>

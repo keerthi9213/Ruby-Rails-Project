@@ -24,22 +24,48 @@
       border-radius: 5px; 
       cursor: pointer;
     }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+    }
   </style>
 </head>
-<body>
-<h1>Purchase History</h1>
+  <body>
+    <h1>Purchase History</h1>
 
-<% @orders.each do |order| %>
-  <div>
-    <%= image_tag "birdhouse4.jpg", class: 'birdhouse-image' %>
+    <div class="container">
+      <!--<% @orders.each do |order| %>
+      <% order.birdhouses.each do |birdhouse| %>
+        <div class="birdhouse-item">
+          <%= image_tag "birdhouse#{birdhouse.id}.jpg", class: 'birdhouse-image' %>
+        </div>
+      <% end %>
+          <h3>Order ID: <%= order.id %></h3>
+          
+          <p>Total cost: <%= order.total_cost %></p>
+          <p>Shipping Address: <%= order.shipping_address %></p>
+          <p>Payment details: <%= order.card_type %> ending with <%= order.card_number.to_s[-4..-1] %></p>
+          
+          <%= link_to 'Add Review', '#', class: 'review-button' %>
+
+      <% end %>-->
+      <% @orders.each do |order| %>
+    <% order.line_items.each do |line_item| %>
+      <div class="birdhouse-item">
+        <%= image_tag "birdhouse#{line_item.birdhouse.id}.jpg", class: 'birdhouse-image' %>
+        <!-- Add more details you want to display for each item -->
+      </div>
+    <% end %>
+    <!-- Order details -->
     <h3>Order ID: <%= order.id %></h3>
-    <p>Item: <%= order.items %></p>
-    <p>Total cost: <%= order.total_cost %></p>
+    <p>Total cost: <%= number_to_currency(order.total_cost) %></p>
     <p>Shipping Address: <%= order.shipping_address %></p>
-    <p>Payment details: <%= order.payment_details %></p>
-    <!-- Other order details -->
-  </div>
-<% end %>
-<%= link_to 'Add Review', '#', class: 'review-button' %>
-</body>
+    <p>Payment details: <%= order.card_type %> ending with <%= order.card_number.to_s[-4..] %></p>
+    <%= link_to 'Add Review', '#', class: 'review-button' %>
+  <% end %>
+    </div>
+    
+  </body>
 </html>

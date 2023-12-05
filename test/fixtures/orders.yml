@@ -3,9 +3,11 @@
 # Table name: orders
 #
 #  id               :bigint           not null, primary key
+#  birdhouse_ids    :text
 #  card_cvv         :integer
 #  card_expiry      :string
 #  card_number      :bigint
+#  card_type        :string
 #  cardholder_name  :string
 #  items            :string
 #  payment_details  :string

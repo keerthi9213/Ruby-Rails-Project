@@ -166,10 +166,3 @@ birdhouses = Birdhouse.create([
   }
 ])
 
-orders = Order.create!(
-  items: 'Glass Birdhouse',
-  total_cost: 69.99,
-  shipping_address: '2345 Park Avenue, Memphis, TN - 38123',
-  payment_details: 'Visa ending with 9087',
-  user: user1
-)
