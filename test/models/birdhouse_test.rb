@@ -11,6 +11,7 @@
 #  Size            :string
 #  Style           :string
 #  likes           :integer          default(10)
+#  quantity        :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

@@ -1,0 +1,6 @@
+<h1>Birdhouse Inventory</h1>
+<% @birdhouses.each do |birdhouse| %>
+  <p><%= birdhouse.name %> - Quantity: <%= birdhouse.item_quantity %></p>
+  <%= link_to 'Edit', edit_birdhouse_path(birdhouse) %> |
+  <%= link_to 'Delete', birdhouse, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
