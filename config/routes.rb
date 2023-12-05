@@ -3,8 +3,6 @@
 Rails.application.routes.draw do
   get 'quizzes/new'
   get 'quizzes/create'
-  get 'inventory_items/new'
-  get 'inventory_items/create'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -33,6 +31,8 @@ Rails.application.routes.draw do
   post 'home/guide/quiz', to: 'quizzes#create', as: 'create_quiz'
 
   get 'history', to: 'users#history', as: 'history'
+
+  get '/inventory', to: 'birdhouse#inventory', as: 'inventory'
 
   resources :questions, only: [:create, :show] do
     resources :answers, only: [:create]
