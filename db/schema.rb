@@ -35,6 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_01_063331) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "likes", default: 10
+    t.integer "quantity", default: 5
   end
 
   create_table "cart_items", force: :cascade do |t|
@@ -54,14 +55,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_01_063331) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_carts_on_user_id"
-  end
-
-  create_table "inventories", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.integer "inventory_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_inventories_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -103,7 +96,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_01_063331) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "role", default: 0
+    t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -113,7 +106,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_01_063331) do
   add_foreign_key "cart_items", "birdhouses"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "carts", "users"
-  add_foreign_key "inventories", "users"
   add_foreign_key "orders", "users"
   add_foreign_key "questions", "users"
   add_foreign_key "quizzes", "users"
