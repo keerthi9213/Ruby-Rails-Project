@@ -28,14 +28,16 @@
               <select name="cart_item[quantity]" id="cart_item_quantity_<%= cart_item.id %>"
                       data-item-id="<%= cart_item.id %>" data-unit-price="<%= cart_item.birdhouse.price %>"
                       class="quantity-dropdown">
-                <% 1.upto(10) do |i| %>
+                <% 1.upto(3) do |i| %>
                   <option value="<%= i %>" <%= 'selected' if cart_item.quantity == i %>><%= i %></option>
                 <% end %>
               </select>
             </p>
             <p>Unit price: <%= number_to_currency(cart_item.birdhouse.price) %></p>
-            <p>Total price: <span id="item-total-<%= cart_item.id %>"><%= number_to_currency(cart_item.quantity * cart_item.birdhouse.price) %></span></p>
-            <%= link_to "Remove", cart_path(cart_item), method: :delete, data: { turbo: false } %>
+            <p>Total price: <span id="item-total-<%= cart_item.id %>" data-current-quantity="<%= cart_item.quantity %>"><%= number_to_currency(cart_item.total_price) %></span></p>
+
+            <!--<p>Total price: <span id="item-total-<%= cart_item.id %>"><%= number_to_currency(cart_item.quantity * cart_item.birdhouse.price) %></span></p>-->
+            <%= button_to "Remove", cart_path(cart_item), method: :delete, data: { turbo: false } %>
           </div>
         </div>
       <% end %>
@@ -62,9 +64,12 @@
       select.addEventListener('change', function() {
         var itemTotalSpan = document.getElementById('item-total-' + this.dataset.itemId);
         var cartTotalSpan = document.getElementById('cart-total');
+        var checkoutLink = document.querySelector('.btn.btn-primary');
         var unitPrice = parseFloat(this.dataset.unitPrice);
         var quantity = parseInt(this.value);
         var itemTotal = unitPrice * quantity;
+        var currentQuantity = parseInt(itemTotalSpan.getAttribute('data-current-quantity'));
+        var additionalQuantity = quantity - currentQuantity;
         
         itemTotalSpan.textContent = itemTotal.toFixed(2); // Format as needed
 
@@ -78,6 +83,7 @@
         
         cartTotal += 5.99 + 3.99; // Add shipping and taxes
         cartTotalSpan.textContent = cartTotal.toFixed(2); // Format as needed
+        checkoutLink.href = `/checkout?total_price=${encodeURIComponent(cartTotal.toFixed(2))}`;
 
         // AJAX call to update the quantity in the cart on the server side
         fetch('/cart_items/' + this.dataset.itemId, { // Replace with your actual route
@@ -87,11 +93,17 @@
             'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
           },
           body: JSON.stringify({
-            cart_item: { quantity: this.value }
+            cart_item: { 
+              add_quantity: additionalQuantity
+             }
+            
           })
         })
         .then(response => response.json())
         .then(data => {
+            var new_quantity = data.new_quantity; // This should be sent back from the server
+
+          itemTotalSpan.setAttribute('data-current-quantity', new_quantity); 
           itemTotalSpan.textContent = data.item_total; // Assuming your server sends back the item total
           cartTotalSpan.textContent = data.cart_total; // Assuming your server sends back the cart total
         })

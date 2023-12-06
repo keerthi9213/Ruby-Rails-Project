@@ -55,7 +55,7 @@
         <div class = "container">
             <div class = "form-container">
                 <h3>Complete Purchase</h3>
-                <%= bootstrap_form_with model: @order, method: :post, url: create_order_path(@order), data: {turbo:false} do |form| %>
+                <%= bootstrap_form_with model: @order, method: :post, url: create_order_path(@order), data: { turbo: false }, html: { id: 'payment-form' } do |form| %>
                     <!-- Shipping Information Fields -->
                     <!--<div class="field">
                         <%= form.label :shipping_address %>
@@ -78,7 +78,7 @@
                     </div>
                     <div class="expiry-cvv-container">
                         <div class="field">
-                            <%= form.number_field :card_number, placeholder: 'XXXX XXXX XXXX XXXX', required: true,  pattern: "\\d*", title: "Numbers only", style: 'width: 200px;'  %>
+                            <%= form.number_field :card_number, placeholder: 'XXXX XXXX XXXX XXXX', required: true,  pattern: "\\d{16}", title: 'Card number must be 16 digits', style: 'width: 200px;'  %>
                         </div>
 
                         <div class="field">
@@ -93,6 +93,26 @@
                 <% end %>
             </div>
         </div>
+        <!--<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var cardNumberInput = document.getElementById('card_number');
+                var form = document.getElementById('payment-form');
+
+                form.addEventListener('submit', function(event) {
+                    var cardNumber = cardNumberInput.value.replace(/\D/g, ''); // Remove any non-digit characters
+
+                    console.log('Form submitted with card number:', cardNumber); // For debugging
+
+                    if(cardNumber.length !== 16) {
+                    console.log('Validation failed, preventing form submission.'); // For debugging
+                    event.preventDefault(); // Prevent form from submitting
+                    alert('Card number must be 16 digits'); // Show message to the user
+                    } else {
+                    console.log('Validation passed, allowing form submission.'); // For debugging
+                    }
+                });
+            });
+        </script>-->
     </body>
 </html>
 
