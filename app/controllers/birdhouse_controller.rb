@@ -1,6 +1,7 @@
 class BirdhouseController < ApplicationController
     before_action :authenticate_user!
     before_action :check_if_vendor, only: [:inventory]
+    before_action :set_birdhouse, only: [:edit, :update, :show, :destroy]
     def listings
         @birdhouses = Birdhouse.all
 
@@ -40,9 +41,31 @@ class BirdhouseController < ApplicationController
         redirect_to gallery_path, notice: 'You have upvoted a birdhouse!'
     end
 
-    private
+    def edit
+        @birdhouse = Birdhouse.find(params[:id])
+    end
 
-    def check_if_vendor
+    def update
+        #@birdhouse = Birdhouse.find(params[:id])
+        if @birdhouse.update(birdhouse_params)
+          redirect_to listings_show_path(@birdhouse), notice: 'Birdhouse was successfully updated.'
+        else
+          render :edit
+        end
+    end
+      private
+    
+      def birdhouse_params
+        # Permit your birdhouse parameters here, for example:
+        params.require(:birdhouse).permit(:material, :color, :style, :roof_design, :size, :artistry, :likes, :quantity)
+      end
+
+      def set_birdhouse
+        @birdhouse = Birdhouse.find(params[:id])
+      #rescue ActiveRecord::RecordNotFound
+       # redirect_to birdhouses_path, alert: "Birdhouse not found."
+      end
+      def check_if_vendor
         unless current_user.role?
         redirect_to listings_path, alert: "You are not authorized to view inventory page."
         end
