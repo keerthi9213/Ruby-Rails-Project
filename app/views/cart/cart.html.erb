@@ -1,18 +1,16 @@
-<!-- app/views/cart/cart.html.erb -->
 <!DOCTYPE html>
 <html>
 <head>
   <title>Your Shopping Cart</title>
-  <!-- Add your other head elements and styles here -->
   <style>
-    /* Your existing styles */
     .birdhouse-image {
-  max-width: 100%;
-  height: 200px; /* Set a fixed height for all images */
-  object-fit: cover; /* Maintain aspect ratio and cover the container */
-  border-bottom: 1px solid #eee;
-  margin-bottom: 20px;
+      max-width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 20px;
     }
+    /* Add additional styles as needed */
   </style>
 </head>
 <body>
@@ -24,35 +22,31 @@
         <div class="cart-item" id="cart-item-<%= cart_item.id %>">
           <%= image_tag "birdhouse#{cart_item.birdhouse.id}.jpg", class: 'birdhouse-image' %>
           <div class="item-details">
-            <h2><%= cart_item.birdhouse.Style %></h2>
+            <h2><%= cart_item.birdhouse.style %></h2>
             <p>
               Quantity: 
-              <select name="cart_item[quantity]" id="cart_item_quantity_<%= cart_item.id %>" data-item-id="<%= cart_item.id %>" data-unit-price="<%= cart_item.birdhouse.Price %>" class="quantity-dropdown">
+              <select name="cart_item[quantity]" id="cart_item_quantity_<%= cart_item.id %>"
+                      data-item-id="<%= cart_item.id %>" data-unit-price="<%= cart_item.birdhouse.price %>"
+                      class="quantity-dropdown">
                 <% 1.upto(10) do |i| %>
                   <option value="<%= i %>" <%= 'selected' if cart_item.quantity == i %>><%= i %></option>
                 <% end %>
               </select>
             </p>
-            <p>Unit Price: <%= number_to_currency(cart_item.birdhouse.Price) %></p>
-            <p>Total Price: <span id="item-total-<%= cart_item.id %>"><%= number_to_currency(cart_item.quantity * cart_item.birdhouse.Price) %></span></p>
-            
-            <td><%= link_to "Remove", cart_path(), method: :delete, data: { turbo: false } %></td>
-
+            <p>Unit price: <%= number_to_currency(cart_item.birdhouse.price) %></p>
+            <p>Total price: <span id="item-total-<%= cart_item.id %>"><%= number_to_currency(cart_item.quantity * cart_item.birdhouse.price) %></span></p>
+            <%= link_to "Remove", cart_path(cart_item), method: :delete, data: { turbo: false } %>
           </div>
         </div>
       <% end %>
     </div>
-
-  <div class="total-price">
-  <!-- ... other price details ... -->
-  <!--<p>Shipping Fee: 5.99 <span id="shipping-fee"><%= @shipping_fee %></span></p>-->
-  <!--<p>Taxes: 3.99 <span id="taxes"><%= @taxes %></span></p>-->
-  <p>Shipping Fee: 5.99 </p>
-  <p>Taxes: 3.99 </p>
-  <strong>Total Price (Including Shipping and Taxes):</strong>
-  <span id="cart-total"><%= number_to_currency(@total_price) %></span>
-  <%= link_to 'Proceed to Checkout', '#', class: 'btn btn-primary' %>
-</div> 
+    <div class="total-price">
+      <p>Shipping Fee: 5.99 </p>
+      <p>Taxes: 3.99 </p>
+      <strong>Total price (Including Shipping and Taxes):</strong>
+      <span id="cart-total"><%= number_to_currency(@total_price) %></span>
+      <%= link_to 'Proceed to Checkout', '#', class: 'btn btn-primary' %>
+    </div> 
   <% else %>
     <p>Your cart is currently empty.</p>
   <% end %>
@@ -68,8 +62,7 @@
         var quantity = parseInt(this.value);
         var itemTotal = unitPrice * quantity;
         
-        // Update the individual item total
-        itemTotalSpan.textContent = itemTotal.toFixed(2);
+        itemTotalSpan.textContent = itemTotal.toFixed(2); // Format as needed
 
         // Calculate and update the new cart total
         var cartTotal = 0;
@@ -78,11 +71,27 @@
           var itemQty = parseInt(sel.value);
           cartTotal += itemPrice * itemQty;
         });
+        
+        cartTotal += 5.99 + 3.99; // Add shipping and taxes
+        cartTotalSpan.textContent = cartTotal.toFixed(2); // Format as needed
 
-        cartTotal += 5.99 + 3.99;
-        cartTotalSpan.textContent = cartTotal.toFixed(2);
-
-        // You will need to add AJAX call here to update the quantity in the cart on the server side
+        // AJAX call to update the quantity in the cart on the server side
+        fetch('/cart_items/' + this.dataset.itemId, { // Replace with your actual route
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+          },
+          body: JSON.stringify({
+            cart_item: { quantity: this.value }
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          itemTotalSpan.textContent = data.item_total; // Assuming your server sends back the item total
+          cartTotalSpan.textContent = data.cart_total; // Assuming your server sends back the cart total
+        })
+        .catch(error => console.error('Error:', error));
       });
     });
   });
