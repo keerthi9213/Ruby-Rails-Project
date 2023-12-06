@@ -1,0 +1,27 @@
+<h1>Edit Profile</h1>
+
+<%= form_for @user, url: user_profile_path(@user), html: { method: :patch } do |f| %>
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contact_number %>
+    <%= f.telephone_field :contact_number %>
+  </div>
+
+  <%= f.submit "Save" %>
+<% end %>
+
+<%= link_to 'Delete Account', user_registration_path, method: :delete, data: { confirm: "Are you sure?" } %>
