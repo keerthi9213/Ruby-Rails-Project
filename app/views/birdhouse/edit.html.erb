@@ -16,7 +16,7 @@
     <%= form.text_field :roof_design, id: :birdhouse_roof_design, value: @birdhouse.roof_design,required: true %>
   </div>
   <div class="field">
-    <%= form.select :size, ['Small', 'Medium', 'Large'], {}, { id: :birdhouse_size , selected: @birdhouse.size} %>
+    <%= form.select :size, ['S', 'M', 'L', 'XL'], {}, { id: :birdhouse_size , selected: @birdhouse.size} %>
   </div>
   <div class="field">
     <%= form.text_field :artistic_details, id: :birdhouse_artistic_details, value: @birdhouse.artistic_details,required: true %>
