@@ -61,8 +61,8 @@ class CartController < ApplicationController
     end
     
     def remove_item
-      cart = current_user.cart.find(params[:id])
-      cart.destroy
+      cartitem = current_user.cart.cart_items.find(params[:id])
+      cartitem.destroy
       redirect_to cart_path, notice: 'Item was successfully removed from the cart.'
     end
     

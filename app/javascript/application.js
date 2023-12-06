@@ -19,3 +19,10 @@ document.addEventListener("turbo:load", () => {
 document.addEventListener("turbo:load", () => {
   autosize(document.querySelectorAll('textarea'))
 })
+
+document.addEventListener('DOMContentLoaded', () => {
+  const flashMessage = document.querySelector('.flash.success');
+  if (flashMessage) {
+    alert(flashMessage.textContent.trim());
+  }
+});

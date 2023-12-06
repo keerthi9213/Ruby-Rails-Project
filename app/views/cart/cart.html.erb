@@ -33,11 +33,16 @@
                 <% end %>
               </select>
             </p>
-            <p>Unit price: <%= number_to_currency(cart_item.birdhouse.price) %></p>
-            <p>Total price: <span id="item-total-<%= cart_item.id %>" data-current-quantity="<%= cart_item.quantity %>"><%= number_to_currency(cart_item.total_price) %></span></p>
+            <p>Unit Price: <%= number_to_currency(cart_item.birdhouse.price) %></p>
+            <p>Total Price: <span id="item-total-<%= cart_item.id %>"><%= number_to_currency(cart_item.quantity * cart_item.birdhouse.price) %></span></p>
+            
+            <td><%= button_to "Remove", buy_now_path(cart_item), method: :delete, data: { turbo: false } %></td>
+
+            <!--<p>Unit price: <%= number_to_currency(cart_item.birdhouse.price) %></p>
+            <p>Total price: <span id="item-total-<%= cart_item.id %>" data-current-quantity="<%= cart_item.quantity %>"><%= number_to_currency(cart_item.total_price) %></span></p>-->
 
             <!--<p>Total price: <span id="item-total-<%= cart_item.id %>"><%= number_to_currency(cart_item.quantity * cart_item.birdhouse.price) %></span></p>-->
-            <%= button_to "Remove", cart_path(cart_item), method: :delete, data: { turbo: false } %>
+            <!--<%= button_to "Remove", cart_path(cart_item), method: :delete, data: { turbo: false } %>-->
           </div>
         </div>
       <% end %>
