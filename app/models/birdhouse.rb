@@ -2,18 +2,18 @@
 #
 # Table name: birdhouses
 #
-#  id              :bigint           not null, primary key
-#  Artistic_detail :string
-#  Color           :string
-#  Material        :string
-#  Price           :decimal(, )
-#  Roof_design     :string
-#  Size            :string
-#  Style           :string
-#  likes           :integer          default(10)
-#  quantity        :integer          default(5)
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id               :bigint           not null, primary key
+#  artistic_details :string
+#  color            :string
+#  likes            :integer          default(10)
+#  material         :string
+#  price            :decimal(, )
+#  quantity         :integer          default(5)
+#  roof_design      :string
+#  size             :string
+#  style            :string
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
 #
 class Birdhouse < ApplicationRecord
 

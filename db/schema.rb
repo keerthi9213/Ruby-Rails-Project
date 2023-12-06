@@ -25,13 +25,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_05_084211) do
   end
 
   create_table "birdhouses", force: :cascade do |t|
-    t.string "Material"
-    t.string "Color"
-    t.string "Style"
-    t.string "Roof_design"
-    t.string "Size"
-    t.string "Artistic_detail"
-    t.decimal "Price"
+    t.string "material"
+    t.string "color"
+    t.string "style"
+    t.string "roof_design"
+    t.string "size"
+    t.string "artistic_details"
+    t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "likes", default: 10
