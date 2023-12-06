@@ -58,9 +58,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_05_084211) do
   end
 
   create_table "line_items", force: :cascade do |t|
-    t.integer "quantity"
-    t.bigint "birdhouse_id", null: false
     t.bigint "order_id", null: false
+    t.bigint "birdhouse_id", null: false
+    t.integer "quantity", default: 1
+    t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["birdhouse_id"], name: "index_line_items_on_birdhouse_id"

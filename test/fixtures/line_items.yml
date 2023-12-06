@@ -3,7 +3,8 @@
 # Table name: line_items
 #
 #  id           :bigint           not null, primary key
-#  quantity     :integer
+#  price        :decimal(, )
+#  quantity     :integer          default(1)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  birdhouse_id :bigint           not null

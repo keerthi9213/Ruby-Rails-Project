@@ -28,7 +28,7 @@
 class Order < ApplicationRecord
   belongs_to :user
   #has_many :birdhouses
-  has_many :line_items, dependent: :destroy
+  has_many :line_items
   has_many :birdhouses, through: :line_items
   validates :shipping_address, :card_number, :card_expiry, :card_cvv, :cardholder_name, presence: true
   validates :total_cost, numericality: true
