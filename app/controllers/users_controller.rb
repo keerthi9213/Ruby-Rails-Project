@@ -3,9 +3,14 @@ class UsersController < ApplicationController
     before_action :set_user, only: [:edit, :update]
     before_action :set_user
 
-    def history
+    def history1
         @orders = current_user.orders.includes(:line_items) # Assuming you have a method `current_user` to get the logged-in user
     end
+
+    def history
+      @orders = current_user.orders.includes(line_items: :birdhouse)
+    end
+    
 
     def require_login
         unless current_user

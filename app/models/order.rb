@@ -27,8 +27,8 @@
 #
 class Order < ApplicationRecord
   belongs_to :user
-  #has_many :birdhouses
-  #has_many :line_items
+  has_many :birdhouses
+  has_many :line_items
   has_many :birdhouses, through: :line_items
   validates :shipping_address, :cardholder_name, :card_number, :card_expiry, :card_cvv, presence: true
   validates :total_cost, numericality: true

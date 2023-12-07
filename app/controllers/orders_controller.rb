@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
       
     #end
     def create
-      #Rails.logger.info "Parameters: #{params.inspect}"
+      
       @order = current_user.orders.build(order_params)
   
       if @order.save
