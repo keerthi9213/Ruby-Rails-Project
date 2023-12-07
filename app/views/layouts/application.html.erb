@@ -96,7 +96,7 @@
       position: absolute;
       right: 0;
       background-color: #f9f9f9;
-      min-width: 160px;
+      min-width: 180px;
       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
       z-index: 1;
     }
@@ -112,6 +112,28 @@
     .dropdown:hover .dropbtn {
       background-color: #3e8e41;
     }
+    .flash {
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      text-align: center;
+      position: relative; 
+      z-index: 10;
+    }
+
+    .flash.notice {
+      background-color: #dff0d8;
+      color: #3c763d;
+      border-color: #d6e9c6;
+    }
+
+    .flash.alert {
+      background-color: #f2dede;
+      color: #a94442;
+      border-color: #ebccd1;
+    }
+
   </style>
 </head>
 <body>
@@ -161,6 +183,28 @@
       <% end %>
     </nav>
   </header>
+    <!-- Flash Messages -->
+  <!--<% flash.each do |type, message| %>
+    <%= content_tag(:div, message, class: "flash #{type}") %>
+  <% end %>-->
+  <!--<% flash.each do |type, message| %>
+    <% if flash[type].present? %>
+      <%= content_tag(:div, message, class: "flash #{type}") %>
+    <% end %>
+    <% flash.discard(type) %>
+  <% end %>-->
+  <!--<% flash.each do |type, message| %>
+  <% if type == "alert" %>
+    <%= content_tag(:div, message, class: "flash #{type}") %>
+  <% end %>
+<% end %>-->
+    <% flash.each do |type, message| %>
+    <% if type == "alert" %>
+      <div class="<%= "flash #{type}" %>">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
 
   <main role="main" class="container">
     <%= yield %>

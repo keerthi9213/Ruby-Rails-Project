@@ -24,4 +24,5 @@
   <%= f.submit "Save" %>
 <% end %>
 
-<%= link_to 'Delete Account', user_registration_path, method: :delete, data: { confirm: "Are you sure?" } %>
+<!--<%= link_to 'Delete Account', user_registration_path, method: :delete, data: { confirm: "Are you sure?" } %>-->
+<%= button_to 'Delete Account', delete_user_path(current_user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'your-button-class' %>

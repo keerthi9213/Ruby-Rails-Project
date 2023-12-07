@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :require_login, only: [:history]
-    before_action :set_user, only: [:edit, :update]
+    before_action :set_user, only: [:edit, :update, :destroy]
 
     def history
       @orders = current_user.orders.includes(line_items: :birdhouse)
@@ -29,7 +29,23 @@ class UsersController < ApplicationController
         end
     end
     
-  
+    def destroy
+      @user = User.find(params[:id])
+      if current_user == @user || current_user.admin?
+        # Handle associated orders
+        @user.orders.each do |order|
+          order.destroy # or handle it as needed
+        end
+    
+        if @user.destroy
+          redirect_to home_path, notice: "The account was deleted successfully"
+        else
+          redirect_to home_path, alert: "There was an error in deleting the account"
+        end
+      else
+        redirect_to home_path, alert: "You do not have permission to delete this account"
+      end
+    end
 
     def user_params
         params.require(:user).permit(:first_name, :last_name, :email, :contact_number)
