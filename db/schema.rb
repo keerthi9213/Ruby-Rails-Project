@@ -57,6 +57,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_05_091442) do
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
+  create_table "line_items", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "birdhouse_id", null: false
+    t.integer "quantity", default: 1
+    t.decimal "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["birdhouse_id"], name: "index_line_items_on_birdhouse_id"
+    t.index ["order_id"], name: "index_line_items_on_order_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.string "items"
     t.decimal "total_cost"
@@ -65,6 +76,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_05_091442) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
+    t.text "birdhouse_ids"
+    t.string "cardholder_name"
+    t.string "card_type"
+    t.bigint "card_number"
+    t.string "card_expiry"
+    t.integer "card_cvv"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -109,6 +126,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_05_091442) do
   add_foreign_key "cart_items", "birdhouses"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "carts", "users"
+  add_foreign_key "line_items", "birdhouses"
+  add_foreign_key "line_items", "orders"
   add_foreign_key "orders", "users"
   add_foreign_key "questions", "users"
   add_foreign_key "quizzes", "users"

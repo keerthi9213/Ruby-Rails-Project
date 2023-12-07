@@ -117,7 +117,7 @@
 <body>
   <header class="navbar">
     <div class="navbar-logo">
-      <%= link_to image_tag('logo.jpg', alt: 'Logo', height: '50'), home_path %>
+      <%= link_to image_tag('logo.png', alt: 'Logo', height: '50'), home_path %>
     </div>
     
     <nav class="navbar-nav">
@@ -135,12 +135,12 @@
       <% if user_signed_in? %>
         <div class="user-info">
           <!-- Cart icon -->
-          <%= link_to image_tag('cart.jpg', alt: 'Cart', height: '24'), cart_path, class: 'nav-link' %>
+          <%= link_to image_tag('cart.png', alt: 'Cart', height: '24'), cart_path, class: 'nav-link' %>
           <!-- Profile image 
-          <%= link_to image_tag('profile.jpg', alt: 'Profile', height: '24'), class: 'nav-link' %>-->
+          <%= link_to image_tag('profile.png', alt: 'Profile', height: '24'), class: 'nav-link' %>-->
           <div class="dropdown">
           <div class="dropbtn">
-            <%= image_tag('profile.jpg', alt: 'Profile', height: '24') %>
+            <%= image_tag('profile.png', alt: 'Profile', height: '24') %>
           </div>
 
 

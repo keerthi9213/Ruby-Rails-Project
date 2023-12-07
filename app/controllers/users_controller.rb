@@ -3,8 +3,9 @@ class UsersController < ApplicationController
     before_action :set_user, only: [:edit, :update]
 
     def history
-        @orders = current_user.orders # Assuming you have a method `current_user` to get the logged-in user
+      @orders = current_user.orders.includes(line_items: :birdhouse)
     end
+    
 
     def require_login
         unless current_user
@@ -28,10 +29,7 @@ class UsersController < ApplicationController
         end
     end
     
-    def set_user
-        @user = current_user
-       
-    end
+  
 
     def user_params
         params.require(:user).permit(:first_name, :last_name, :email, :contact_number)
@@ -39,4 +37,10 @@ class UsersController < ApplicationController
     end
     
       
+
+    private
+
+    def set_user
+      @user = current_user # Ensure this is correctly finding the logged-in user
+    end
 end
