@@ -53,6 +53,14 @@ class BirdhouseController < ApplicationController
           render :edit
         end
     end
+    def destroy
+        @birdhouse = Birdhouse.find(params[:id])
+        if @birdhouse.destroy
+            redirect_to inventory_path, notice: "Birdhouse deleted successfully"
+        else
+            redirect_to inventory_path, notice: "There was an error in deleting the birdhouse"
+        end
+    end
       private
     
       def birdhouse_params
