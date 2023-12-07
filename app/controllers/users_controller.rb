@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
     before_action :require_login, only: [:history]
     before_action :set_user, only: [:edit, :update]
+<<<<<<< HEAD
     before_action :set_user
 
     def history1
         @orders = current_user.orders.includes(:line_items) # Assuming you have a method `current_user` to get the logged-in user
     end
+=======
+>>>>>>> f44672dae7e26d7c82666e7385e8b34a4885c09e
 
     def history
       @orders = current_user.orders.includes(line_items: :birdhouse)
@@ -45,10 +48,13 @@ class UsersController < ApplicationController
     end
     
       
+<<<<<<< HEAD
 
     private
 
     def set_user
       @user = current_user # Ensure this is correctly finding the logged-in user
     end
+=======
+>>>>>>> f44672dae7e26d7c82666e7385e8b34a4885c09e
 end

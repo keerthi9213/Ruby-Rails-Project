@@ -12,8 +12,10 @@ Rails.application.routes.draw do
   resources :birdhouse do
     member do
       put :upvote
+      get :listings_show
     end
   end
+  resources :birdhouses
   get 'home/guide', to: 'home#guide', as: 'guide'
   get 'home/guide/community', to: 'home#community', as: 'community'
   get 'home/listings', to: 'birdhouse#listings', as: 'listings'
@@ -35,6 +37,11 @@ Rails.application.routes.draw do
   get 'history', to: 'users#history', as: 'history'
 
   get '/inventory', to: 'birdhouse#inventory', as: 'inventory'
+
+  get '/inventory/:id/edit', to: 'inventory#edit', as: 'edit_inventory'
+  patch '/inventory/:id', to: 'inventory#update', as: 'update_inventory'
+  delete '/listings/:id', to: 'birdhouse#destroy', as: 'delete_listing'
+ 
 
   resources :questions, only: [:create, :show] do
     resources :answers, only: [:create]
