@@ -55,7 +55,7 @@
         <div class = "container">
             <div class = "form-container">
                 <h3>Complete Purchase</h3>
-                <%= bootstrap_form_with model: @order, method: :post, url: create_order_path(@order), data: { turbo: false }, html: { id: 'payment-form' } do |form| %>
+                <%= bootstrap_form_with model: @order, method: :post, url: orders_path, data: { turbo: false }, html: { id: 'payment-form' }, local: true do |form| %>
                     <!-- Shipping Information Fields -->
                     <!--<div class="field">
                         <%= form.label :shipping_address %>
@@ -66,7 +66,9 @@
                     </div>
 
                     <div class="field">
-                        <%= form.number_field :total_cost, value: params[:total_price], required: true, readonly: true, style: 'width: 100px' %>
+                        <%= form.number_field :total_cost, value: @total_price, readonly: true %>
+
+                        <!--<%= form.number_field :total_cost, value: params[:total_price], required: true, readonly: true, style: 'width: 100px' %>-->
                     </div>
                     <p>PAYMENT DETAILS</p>
                     <!-- Simulated Payment Information -->
@@ -86,7 +88,7 @@
                         </div>
 
                         <div class="field">
-                            <%= form.number_field :card_cvv, placeholder: 'XXXX', required: true, style: 'width: 70px;'  %>
+                            <%= form.number_field :card_cvv, placeholder: 'XXXX', required: true,  pattern: "\\d{3,4}", title: 'CVV must have 3 or 4 digits', style: 'width: 70px;'  %>
                         </div>
                     </div>
                     <%= form.submit "Place Order", id: "submit-button" %>
@@ -97,9 +99,11 @@
             document.addEventListener('DOMContentLoaded', function() {
                 var cardNumberInput = document.getElementById('card_number');
                 var form = document.getElementById('payment-form');
+                var cvvInput = document.getElementById('card_cvv'); 
 
                 form.addEventListener('submit', function(event) {
-                    var cardNumber = cardNumberInput.value.replace(/\D/g, ''); // Remove any non-digit characters
+                    var cardNumber = cardNumberInput.value.replace(/\D/g, '');
+                    var cvv = cvvInput.value.replace(/\D/g, '');
 
                     console.log('Form submitted with card number:', cardNumber); // For debugging
 
@@ -107,9 +111,14 @@
                     console.log('Validation failed, preventing form submission.'); // For debugging
                     event.preventDefault(); // Prevent form from submitting
                     alert('Card number must be 16 digits'); // Show message to the user
+                    } else if(!cvv.match(/^\d{3,4}$/)) {
+                    console.log('CVV validation failed, preventing form submission.');
+                    event.preventDefault(); // Prevent form from submitting
+                    alert('CVV must be 3 or 4 digits'); // Show message to the user
                     } else {
                     console.log('Validation passed, allowing form submission.'); // For debugging
                     }
+                    
                 });
             });
         </script>

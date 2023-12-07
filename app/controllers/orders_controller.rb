@@ -1,15 +1,16 @@
 # app/controllers/orders_controller.rb
 
 class OrdersController < ApplicationController
-    before_action :authenticate_user!, only: [:new, :create]  # Assuming you're using Devise for user authentication
+    before_action :authenticate_user!, only: [:new, :create, :checkout]  # Assuming you're using Devise for user authentication
   
-    def new
-      @order = Order.new
-      @total_price = session[:total_price]
-      @order = Order.new(total_cost: @total_price)
+    #def new
+      #@order = Order.new
+      #@total_price = params[:total_price]
+      #@order = Order.new(total_cost: @total_price)
       
-    end
+    #end
     def create
+      #Rails.logger.info "Parameters: #{params.inspect}"
       @order = current_user.orders.build(order_params)
   
       if @order.save
@@ -23,11 +24,22 @@ class OrdersController < ApplicationController
         render :new
       end
     end
+
+    def checkout
+      session[:total_price] = @total_price
+      #@cart = current_user.cart
+      #@total_price = calculate_cart_total(@cart)
+      @total_price = params[:total_price]
+      @order = Order.new(total_cost: params[:total_price])
+      #@order = Order.new(total_cost: @total_price)
+
+    end
+  
   
     private
   
     def order_params
-      params.require(:order).permit(:shipping_address, :total_cost, :card_number, :card_expiry, :card_cvv, :cardholder_name, :card_type)
+      params.require(:order).permit(:shipping_address, :total_cost, :cardholder_name, :card_type, :card_number, :card_expiry, :card_cvv)
     end
   end
   

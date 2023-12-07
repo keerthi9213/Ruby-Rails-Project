@@ -28,21 +28,19 @@
               <select name="cart_item[quantity]" id="cart_item_quantity_<%= cart_item.id %>"
                       data-item-id="<%= cart_item.id %>" data-unit-price="<%= cart_item.birdhouse.price %>"
                       class="quantity-dropdown">
-                <% 1.upto(3) do |i| %>
+                <% 1.upto(5) do |i| %>
                   <option value="<%= i %>" <%= 'selected' if cart_item.quantity == i %>><%= i %></option>
                 <% end %>
               </select>
             </p>
             <p>Unit Price: <%= number_to_currency(cart_item.birdhouse.price) %></p>
-            <p>Total Price: <span id="item-total-<%= cart_item.id %>"><%= number_to_currency(cart_item.quantity * cart_item.birdhouse.price) %></span></p>
+            <p>Total price: <span id="item-total-<%= cart_item.id %>" data-current-quantity="<%= cart_item.quantity %>"><%= number_to_currency(cart_item.total_price) %></span></p>
+
+            <!--<p>Total Price: <span id="item-total-<%= cart_item.id %>"><%= number_to_currency(cart_item.quantity * cart_item.birdhouse.price) %></span></p>-->
             
             <td><%= button_to "Remove", buy_now_path(cart_item), method: :delete, data: { turbo: false } %></td>
 
-            <!--<p>Unit price: <%= number_to_currency(cart_item.birdhouse.price) %></p>
-            <p>Total price: <span id="item-total-<%= cart_item.id %>" data-current-quantity="<%= cart_item.quantity %>"><%= number_to_currency(cart_item.total_price) %></span></p>-->
-
-            <!--<p>Total price: <span id="item-total-<%= cart_item.id %>"><%= number_to_currency(cart_item.quantity * cart_item.birdhouse.price) %></span></p>-->
-            <!--<%= button_to "Remove", cart_path(cart_item), method: :delete, data: { turbo: false } %>-->
+            
           </div>
         </div>
       <% end %>
@@ -75,6 +73,7 @@
         var itemTotal = unitPrice * quantity;
         var currentQuantity = parseInt(itemTotalSpan.getAttribute('data-current-quantity'));
         var additionalQuantity = quantity - currentQuantity;
+        var newQuantity = parseInt(this.value);
         
         itemTotalSpan.textContent = itemTotal.toFixed(2); // Format as needed
 
@@ -99,7 +98,7 @@
           },
           body: JSON.stringify({
             cart_item: { 
-              add_quantity: additionalQuantity
+              quantity: newQuantity
              }
             
           })
