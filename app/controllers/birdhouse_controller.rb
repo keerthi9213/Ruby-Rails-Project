@@ -71,4 +71,18 @@ class BirdhouseController < ApplicationController
         end
     end
 
+    def new
+        @birdhouse = Birdhouse.new
+        render :new
+    end
+
+    def save
+        #@birdhouse = Birdhouse.find(params[:id])
+        if @birdhouse.save(birdhouse_params)
+          redirect_to listings_show_path(@birdhouse), notice: 'Birdhouse was successfully created.'
+        else
+          render :new
+        end
+    end
+
 end

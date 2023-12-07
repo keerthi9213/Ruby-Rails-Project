@@ -41,6 +41,10 @@ Rails.application.routes.draw do
   get '/inventory/:id/edit', to: 'inventory#edit', as: 'edit_inventory'
   patch '/inventory/:id', to: 'inventory#update', as: 'update_inventory'
 
+  get 'inventory/new', to: 'inventory#new', as: 'new'
+  post 'inventory/new', to: 'inventory#save', as: 'save'
+
+
   resources :questions, only: [:create, :show] do
     resources :answers, only: [:create]
   end

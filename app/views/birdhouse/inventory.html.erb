@@ -72,7 +72,7 @@
     </head>
     <body>
         <p></p>
-        <%= link_to 'Add New listings', '#', class: 'add-button' %>
+        <%= link_to 'Add New listings', new_path, class: 'add-button' %>
         <div class="container">
             <% if @birdhouses.present?%>
                 <% @birdhouses.each do |birdhouse| %>
