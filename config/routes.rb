@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       put :upvote
       get :listings_show
     end
-  end
+  end 
   resources :birdhouses
   get 'home/guide', to: 'home#guide', as: 'guide'
   get 'home/guide/community', to: 'home#community', as: 'community'
@@ -53,6 +53,8 @@ Rails.application.routes.draw do
   post 'checkout', to: 'orders#create', as: 'create_order'
   get 'orders/:id', to: 'orders#show', as: 'order_confirmation'
   get '/thank_you', to: 'orders#thank_you', as: 'thank_you'
+
+  delete '/users/:id', to: 'users#destroy', as: 'delete_user'
 
 
 end

@@ -23,11 +23,10 @@
 class User < ApplicationRecord
 
   has_one :cart, dependent: :destroy
-  has_many :questions
-  has_many :quizzes
-  has_many :answers
-  has_many :quizzes
-  has_many :orders
+  has_many :questions, dependent: :destroy
+  has_many :quizzes, dependent: :destroy
+  has_many :answers, dependent: :destroy
+  has_many :orders, dependent: :destroy
 
   def create_cart
     build_cart(shipping_fee: 0, taxes: 0).save
