@@ -30,9 +30,7 @@ class UsersController < ApplicationController
     def destroy
       @user = User.find(params[:id])
       if current_user == @user && !(current_user.role?)
-        @user.orders.each do |order|
-          order.destroy 
-        end
+
     
         if @user.destroy
           redirect_to home_path, notice: "The account was deleted successfully"
