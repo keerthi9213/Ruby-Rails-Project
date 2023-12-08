@@ -1,0 +1,22 @@
+<!-- app/views/customization/index.html.erb -->
+<%= form_with model: Customization.new, url: create_customization_path do |form| %>
+  <!-- ... other form fields ... -->
+  <%= form.hidden_field :authenticity_token, value: form_authenticity_token %>
+
+  <div>
+    <%= form.label :birdhouse_id, 'Choose a Birdhouse:' %>
+    <%= form.collection_select :birdhouse_id, @birdhouses,  :id, :style, prompt: "Select a Birdhouse" %>
+  </div>
+
+  <div>
+    <%= form.label :theme, 'Select a Theme:' %>
+    <%= form.select :theme, @themes, prompt: "Select a Theme" %>
+  </div>
+
+  <div>
+    <%= form.label :design_details, 'Design Details:' %>
+    <%= form.text_area :design_details %>
+  </div>
+
+  <%= form.submit 'Save Customization' %>
+<% end %>

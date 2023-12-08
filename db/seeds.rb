@@ -167,3 +167,18 @@ birdhouses = Birdhouse.create([
   }
 ])
 
+if User.any? && Birdhouse.any?
+  # Sample themes
+  themes = ["Spring Blossom", "Autumn Twilight", "Winter Wonderland", "Summer Solstice"]
+
+  # Create Customizations
+  10.times do |i|
+    Customization.create!(
+      user: User.order("RANDOM()").first,
+      birdhouse: Birdhouse.order("RANDOM()").first,
+      theme: themes.sample,
+      design_details: "Design details for #{themes.sample} theme"
+    )
+  end
+end
+
