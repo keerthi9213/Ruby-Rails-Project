@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       put :upvote
       get :listings_show
     end
-  end
+  end 
   resources :birdhouses
   get 'home/guide', to: 'home#guide', as: 'guide'
   get 'home/guide/community', to: 'home#community', as: 'community'

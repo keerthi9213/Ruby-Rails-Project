@@ -20,8 +20,6 @@ class UsersController < ApplicationController
     
     def update
         if @user.update(user_params)
-          # For a real popup message, you might use something like a JS alert or a modal
-          # For simplicity here, we'll use a flash message and redirect
           flash[:success] = 'Details updated successfully.'
           redirect_to edit_user_profile_path
         else
@@ -31,10 +29,9 @@ class UsersController < ApplicationController
     
     def destroy
       @user = User.find(params[:id])
-      if current_user == @user || current_user.admin?
-        # Handle associated orders
+      if current_user == @user && !(current_user.role?)
         @user.orders.each do |order|
-          order.destroy # or handle it as needed
+          order.destroy 
         end
     
         if @user.destroy
@@ -43,17 +40,15 @@ class UsersController < ApplicationController
           redirect_to home_path, alert: "There was an error in deleting the account"
         end
       else
-        redirect_to home_path, alert: "You do not have permission to delete this account"
+        redirect_to home_path, alert: "Admin account cannot be deleted"
       end
     end
 
     def user_params
         params.require(:user).permit(:first_name, :last_name, :email, :contact_number)
-        # Add any other user attributes you want to be able to change
+        
     end
     
-      
-
     private
 
     def set_user
