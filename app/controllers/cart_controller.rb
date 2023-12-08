@@ -55,6 +55,10 @@ class CartController < ApplicationController
       @total_price = item_total + 5.99 + 3.99
     end
     
+    def show
+      
+      session[:total_price] = @total_price
+    end
     
     def remove_item
       cartitem = current_user.cart.cart_items.find(params[:id])
