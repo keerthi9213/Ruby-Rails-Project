@@ -1,27 +1,69 @@
-<h1>Edit Profile</h1>
+<html>
+<head>
+  <style>
+    input[type="text"], input[type="email"], input[type="tel"] {
+      background: white; 
+      color: black;      
+      border: 1px solid #ccc; 
+      margin-bottom: 20px;
+    }
 
-<%= form_for @user, url: user_profile_path(@user), html: { method: :patch } do |f| %>
-  <div class="field">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
+    input[type="submit"] {
+      background-color: green; 
+      color: white;            
+      padding: 10px 20px;      
+      border: none;            
+      border-radius: 5px;      
+      cursor: pointer;
+      margin-bottom: 20px;         
+    }
+
+
+
+    .delete-account {
+      bottom: 20px;
+      right: 20px; 
+      background-color: red; 
+      color: white; 
+      padding: 10px 20px; 
+      border: none; 
+      border-radius: 5px; 
+      cursor: pointer; 
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Manage Account</h1>
+  <div class = manage-account>
+  <%= form_for @user, url: user_profile_path(@user), html: { method: :patch } do |f| %>
+    <div class="field">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </div>
+
+    <div class="field">
+      <%= f.label :contact_number %>
+      <%= f.telephone_field :contact_number %>
+    </div>
+
+    <%= f.submit "Save" %>
+  <% end %>
+  <%= button_to 'Delete Account', delete_user_path(current_user),
+     method: :delete, form: { id: 'deleteAccountForm' }, 
+     id: 'deleteAccountButton', class: 'delete-account', onclick: 'event.preventDefault();' 
+  %>
+  <!--<%= button_to 'Delete Account', delete_user_path(current_user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-account' %>-->
   </div>
-
-  <div class="field">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-  </div>
-
-  <div class="field">
-    <%= f.label :contact_number %>
-    <%= f.telephone_field :contact_number %>
-  </div>
-
-  <%= f.submit "Save" %>
-<% end %>
-
-<%= link_to 'Delete Account', user_registration_path, method: :delete, data: { confirm: "Are you sure?" } %>
+</body>
+</html>

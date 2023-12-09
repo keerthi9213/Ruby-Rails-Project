@@ -96,7 +96,7 @@
       position: absolute;
       right: 0;
       background-color: #f9f9f9;
-      min-width: 160px;
+      min-width: 180px;
       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
       z-index: 1;
     }
@@ -112,12 +112,62 @@
     .dropdown:hover .dropbtn {
       background-color: #3e8e41;
     }
+    .flash {
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      text-align: center;
+      position: relative; 
+      z-index: 10;
+    }
+
+    .flash.notice {
+      background-color: #dff0d8;
+      color: #3c763d;
+      border-color: #d6e9c6;
+    }
+
+    .flash.alert {
+      background-color: #f2dede;
+      color: #a94442;
+      border-color: #ebccd1;
+    }
+    #confirmationModal {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border: 1px solid #ccc;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      display: none; /* Start with the modal not displayed */
+    }
+  .modal-button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .yes-button {
+    background-color: red; 
+    color: white;
+  }
+  .no-button {
+    background-color: #4CAF50; 
+    color: white;
+  }
+
   </style>
 </head>
 <body>
   <header class="navbar">
     <div class="navbar-logo">
-      <%= link_to image_tag('logo.jpg', alt: 'Logo', height: '50'), home_path %>
+      <%= link_to image_tag('logo.png', alt: 'Logo', height: '50'), home_path %>
     </div>
     
     <nav class="navbar-nav">
@@ -135,12 +185,12 @@
       <% if user_signed_in? %>
         <div class="user-info">
           <!-- Cart icon -->
-          <%= link_to image_tag('cart.jpg', alt: 'Cart', height: '24'), cart_path, class: 'nav-link' %>
+          <%= link_to image_tag('cart.png', alt: 'Cart', height: '24'), cart_path, class: 'nav-link' %>
           <!-- Profile image 
-          <%= link_to image_tag('profile.jpg', alt: 'Profile', height: '24'), class: 'nav-link' %>-->
+          <%= link_to image_tag('profile.png', alt: 'Profile', height: '24'), class: 'nav-link' %>-->
           <div class="dropdown">
           <div class="dropbtn">
-            <%= image_tag('profile.jpg', alt: 'Profile', height: '24') %>
+            <%= image_tag('profile.png', alt: 'Profile', height: '24') %>
           </div>
 
 
@@ -161,6 +211,53 @@
       <% end %>
     </nav>
   </header>
+    <div id="confirmationModal">
+    <p>Are you sure you want to delete your account?</p>
+    <button id="confirmDelete" class="modal-button yes-button">Yes</button>
+    <button id="cancelDelete" class="modal-button no-button">No</button>
+  </div>
+
+  <script>
+    // Add the modal JavaScript at the bottom of your body tag
+    document.addEventListener('DOMContentLoaded', (event) => {
+      // When the delete button is clicked, show the modal
+      document.getElementById('deleteAccountButton').addEventListener('click', function() {
+        document.getElementById('confirmationModal').style.display = 'block';
+      });
+
+      // If "Yes" is clicked, submit the form
+      document.getElementById('confirmDelete').addEventListener('click', function() {
+        document.getElementById('deleteAccountForm').submit();
+      });
+
+      // If "No" is clicked, hide the modal
+      document.getElementById('cancelDelete').addEventListener('click', function() {
+        document.getElementById('confirmationModal').style.display = 'none';
+      });
+    });
+  </script>
+    <!-- Flash Messages -->
+  <!--<% flash.each do |type, message| %>
+    <%= content_tag(:div, message, class: "flash #{type}") %>
+  <% end %>-->
+  <!--<% flash.each do |type, message| %>
+    <% if flash[type].present? %>
+      <%= content_tag(:div, message, class: "flash #{type}") %>
+    <% end %>
+    <% flash.discard(type) %>
+  <% end %>-->
+  <!--<% flash.each do |type, message| %>
+  <% if type == "alert" %>
+    <%= content_tag(:div, message, class: "flash #{type}") %>
+  <% end %>
+<% end %>-->
+   <!-- <% flash.each do |type, message| %>
+    <% if type == "alert" %>
+      <div class="<%= "flash #{type}" %>">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>-->
 
   <main role="main" class="container">
     <%= yield %>

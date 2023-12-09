@@ -12,8 +12,10 @@ Rails.application.routes.draw do
   resources :birdhouse do
     member do
       put :upvote
+      get :listings_show
     end
-  end
+  end 
+  resources :birdhouses
   get 'home/guide', to: 'home#guide', as: 'guide'
   get 'home/guide/community', to: 'home#community', as: 'community'
   get 'home/listings', to: 'birdhouse#listings', as: 'listings'
@@ -40,8 +42,23 @@ Rails.application.routes.draw do
 
   get '/inventory', to: 'birdhouse#inventory', as: 'inventory'
 
+  get '/inventory/:id/edit', to: 'inventory#edit', as: 'edit_inventory'
+  patch '/inventory/:id', to: 'inventory#update', as: 'update_inventory'
+  delete '/listings/:id', to: 'birdhouse#destroy', as: 'delete_listing'
+ 
+
   resources :questions, only: [:create, :show] do
     resources :answers, only: [:create]
   end
+
+  resources :orders#, only: [:new, :create, :show]
+
+  get 'checkout', to: 'orders#checkout'
+  post 'checkout', to: 'orders#create', as: 'create_order'
+  get 'orders/:id', to: 'orders#show', as: 'order_confirmation'
+  get '/thank_you', to: 'orders#thank_you', as: 'thank_you'
+
+  delete '/users/:id', to: 'users#destroy', as: 'delete_user'
+
 
 end
