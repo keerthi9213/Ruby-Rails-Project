@@ -29,6 +29,10 @@ Rails.application.routes.draw do
 
   get 'home/guide/quiz', to: 'quizzes#new', as: 'new_quiz'
   post 'home/guide/quiz', to: 'quizzes#create', as: 'create_quiz'
+  
+  resources :quizzes, only: [:new, :create, :show]
+
+ 
   get 'profile/edit', to: 'users#edit', as: 'edit_user_profile'
   patch 'profile', to: 'users#update', as: 'user_profile'
 
