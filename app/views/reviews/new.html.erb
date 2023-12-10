@@ -1,0 +1,12 @@
+
+<%= form_with(model: [ @order, @order.reviews.build ], local: true) do |form| %>
+  <%= form.label :rating %>
+  <%= form.number_field :rating, in: 1..5 %>
+
+  <%= form.label :feedback %>
+  <%= form.text_area :feedback %>
+
+  <%= form.submit "Submit Review" %>
+<% end %>
+
+
