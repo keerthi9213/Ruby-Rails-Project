@@ -99,7 +99,7 @@
 
 
 <div class="birdhouse-card">
-  <%= image_tag "birdhouse#{params[:id]}.jpg", alt: "Birdhouse Image", class: 'birdhouse-image' %>
+  <%= image_tag url_for(@birdhouse.figure_image), alt: "Birdhouse Image", class: 'birdhouse-image' %>
   <div class="info">
     <h3><%= @birdhouse.style %> Birdhouse</h3>
     <p><strong>material:</strong> <%= @birdhouse.material %></p>

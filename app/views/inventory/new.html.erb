@@ -23,6 +23,9 @@
     <%= form.text_field :artistic_details, id: :birdhouse_artistic_details, value: @birdhouse.artistic_details,required: true %>
   </div>
   <div class="field">
+    <%= form.number_field :price, id: :birdhouse_price, value: @birdhouse.price, step: 'any', required: true %>
+  </div>
+  <div class="field">
     <%= form.number_field :quantity, id: :birdhouse_quantity, value: @birdhouse.quantity,required: true %>
   </div>
   <div class="actions">

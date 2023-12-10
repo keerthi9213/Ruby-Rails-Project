@@ -128,8 +128,8 @@
   <% else %>
     <% @birdhouses.each do |birdhouse| %>
       <div class="birdhouse-item">
-        <%= image_tag "birdhouse#{birdhouse.id}.jpg", class: 'birdhouse-image' %>
         <div class="birdhouse-details">
+          <%= image_tag url_for(birdhouse.figure_image), style:'width: 200px; height: 200px;'%>
           <p class="price">$<%= '%.2f' % birdhouse.price %></p>
           <%= link_to "Select", listings_show_path(birdhouse), class: 'select-button' %>
         </div>
