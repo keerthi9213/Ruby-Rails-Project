@@ -4,7 +4,6 @@
 #
 #  id             :bigint           not null, primary key
 #  design_details :text
-#  theme          :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  birdhouse_id   :bigint           not null
@@ -23,8 +22,10 @@
 class Customization < ApplicationRecord
   belongs_to :user
   belongs_to :birdhouse
+  has_one_attached :figure_image
+  
 
-  validates :theme, presence: true
-  validates :design_details, presence: true, length: { minimum: 10 } # Adjust validations as needed
+  #validates :theme, presence: true
+  validates :design_details, presence: true, length: { minimum: 5} # Adjust validations as needed
 
 end

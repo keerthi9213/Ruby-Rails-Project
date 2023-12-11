@@ -1,22 +1,46 @@
 <!-- app/views/customization/index.html.erb -->
-<%= form_with model: Customization.new, url: create_customization_path do |form| %>
-  <!-- ... other form fields ... -->
-  <%= form.hidden_field :authenticity_token, value: form_authenticity_token %>
+<% unless current_user.role? %>
+  <%= form_with model: Customization.new, url: create_customization_path, local: true do |form| %>
+    <div>
+      <%= form.label :birdhouse_id, 'Choose a Birdhouse:' %>
+      <%= form.collection_select :birdhouse_id, @birdhouses, :id, :style, prompt: "Select a Birdhouse" %>
+    </div>
 
-  <div>
-    <%= form.label :birdhouse_id, 'Choose a Birdhouse:' %>
-    <%= form.collection_select :birdhouse_id, @birdhouses,  :id, :style, prompt: "Select a Birdhouse" %>
-  </div>
+    <div>
+      <%= form.label :figure_image, 'Upload a Theme:' %>
+      <%= form.file_field :figure_image %>
+    </div>
 
-  <div>
-    <%= form.label :theme, 'Select a Theme:' %>
-    <%= form.select :theme, @themes, prompt: "Select a Theme" %>
-  </div>
+    <div>
+      <%= form.label :design_details, 'Design Details:' %>
+      <%= form.text_area :design_details %>
+    </div>
 
-  <div>
-    <%= form.label :design_details, 'Design Details:' %>
-    <%= form.text_area :design_details %>
-  </div>
+    <%= form.submit 'Save Customization' %>
+  <% end %>
+<% end %>
 
-  <%= form.submit 'Save Customization' %>
+<%# ...existing code... %>
+
+<% if current_user.role? %>
+  <h2>Customization Requests:</h2>
+<% else %>
+  <h2>Your Saved Customizations:</h2>
+<% end %>
+
+<% if @customizations.any? %>
+  <ul>
+    <% @customizations.each do |customization| %>
+      <li>
+        <strong>Birdhouse:</strong> <%= customization.birdhouse.style %>,
+        <% if customization.figure_image.attached? %>
+          <strong>Theme Image:</strong>
+          <%= image_tag(customization.figure_image, style: 'width: 200px; height: 200px;') %>
+        <% end %>
+        <% unless current_user.role? %>
+          <strong>Details:</strong> <%= customization.design_details %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
 <% end %>

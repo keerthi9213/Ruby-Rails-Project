@@ -167,3 +167,16 @@ birdhouses = Birdhouse.create([
   }
 ])
 
+
+
+image_filenames = ['birdhouse1.jpg','birdhouse2.jpg','birdhouse3.jpg','birdhouse4.jpg','birdhouse5.jpg','birdhouse6.jpg','birdhouse7.jpg','birdhouse8.jpg','birdhouse9.jpg','birdhouse10.jpg','birdhouse11.jpg','birdhouse12.jpg']
+ 
+#birdhouses.each do |birdhouse|
+ # image_filename = image_filenames.sample
+  #birdhouse.figure_image.attach(io: File.open(Rails.root.join("app/assets/images/#{image_filename}")), filename:image_filename)
+#end
+
+birdhouses.each_with_index do |birdhouse, index|
+  image_filename = image_filenames[index % image_filenames.size]
+  birdhouse.figure_image.attach(io: File.open(Rails.root.join("app/assets/images/#{image_filename}")), filename: image_filename)
+end

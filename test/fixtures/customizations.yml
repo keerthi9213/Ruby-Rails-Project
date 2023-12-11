@@ -4,7 +4,6 @@
 #
 #  id             :bigint           not null, primary key
 #  design_details :text
-#  theme          :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  birdhouse_id   :bigint           not null

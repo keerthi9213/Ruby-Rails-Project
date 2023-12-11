@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_07_023220) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_08_043925) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -88,7 +88,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_07_023220) do
   create_table "customizations", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "birdhouse_id", null: false
-    t.string "theme"
     t.text "design_details"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
