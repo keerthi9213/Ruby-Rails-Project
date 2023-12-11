@@ -68,6 +68,15 @@
                     margin-top: 10px;
                     display: inline-block;
                 }
+                .delete-item-btn {
+                    text-decoration: none;
+                    color: #fff;
+                    background-color: #d9534f;
+                    padding: 10px 15px;
+                    border-radius: 5px;
+                    margin-top: 10px;
+                    display: inline-block; /* This makes the buttons line up horizontally */
+                }
         </style>
     </head>
     <body>
@@ -77,7 +86,7 @@
             <% if @birdhouses.present?%>
                 <% @birdhouses.each do |birdhouse| %>
                     <div class="birdhouse-item">
-                    <%= image_tag "birdhouse#{birdhouse.id}.jpg", class: 'birdhouse-image' %>
+                              <%= image_tag url_for(birdhouse.figure_image), style:'width: 200px; height: 200px;'%>
                     <div class="birdhouse-details">
                         <p class="price"> Quantity: <%= birdhouse.quantity %></p>
                         <p class="price">$<%= '%.2f' % birdhouse.price %></p>

@@ -1,25 +1,30 @@
+
 <!-- app/views/birdhouses/edit.html.erb -->
 
 <h1>Add Birdhouse</h1>
-<%= bootstrap_form_with(model: @birdhouse, local: true) do |form| %>
+<%= bootstrap_form_with model: @birdhouse, url: save_path, method: :post, data: { turbo: false } do |form| %>
 
+  <%= form.file_field :figure_image %>
   <div class="field">
-    <%= form.text_field :material, id: :birdhouse_material,  value: @birdhouse.material, required: true %>
+    <%= form.select :material, ['Ceramic', 'Wood', 'Stoneware'], { selected: @birdhouse.material, required: true }, { id: :birdhouse_material } %>
   </div>
   <div class="field">
-    <%= form.text_field :color, id: :birdhouse_color, value: @birdhouse.color,required: true %>
+    <%= form.select :color, ['Brown', 'White', 'Blue', 'Green'], { selected: @birdhouse.color, required: true }, { id: :birdhouse_color } %>
   </div>
   <div class="field">
-    <%= form.text_field :style, id: :birdhouse_style, value: @birdhouse.style,required: true %>
+      <%= form.select :style, ['Vintage', 'Modern', 'Rustic', 'Classic'], { selected: @birdhouse.style, required: true }, { id: :birdhouse_style } %>
   </div>
   <div class="field">
-    <%= form.text_field :roof_design, id: :birdhouse_roof_design, value: @birdhouse.roof_design,required: true %>
+        <%= form.select :roof_design, ['Classic Teapot Lid', 'Sleek Round Lid', 'Pitched Barn Roof', 'Smooth Dome Lid'], { selected: @birdhouse.roof_design, required: true }, { id: :birdhouse_roof_design } %>
   </div>
   <div class="field">
-    <%= form.select :size, ['S', 'M', 'L', 'XL'], {}, { id: :birdhouse_size , selected: @birdhouse.size} %>
+    <%= form.select :size, ['S', 'M', 'L', 'XL'], { selected: @birdhouse.size, required: true }, { id: :birdhouse_size } %>
   </div>
   <div class="field">
-    <%= form.text_field :artistic_details, id: :birdhouse_artistic_details, value: @birdhouse.artistic_details,required: true %>
+        <%= form.select :artistic_details, ['Abstract Geometric Patterns', 'Stained Glass Panels', 'Hand-painted floral design', 'Carved Wood Details'], { selected: @birdhouse.artistic_details, required: true }, { id: :birdhouse_artistic_details } %>
+  </div>
+  <div class="field">
+    <%= form.number_field :price, id: :birdhouse_price, value: @birdhouse.price, step: 'any', required: true %>
   </div>
   <div class="field">
     <%= form.number_field :quantity, id: :birdhouse_quantity, value: @birdhouse.quantity,required: true %>
