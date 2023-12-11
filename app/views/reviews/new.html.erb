@@ -1,0 +1,22 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <%= form_with(model: [ @order, @order.reviews.build ], local: true) do |form| %>
+      <div class = "field">
+        <%= form.label :rating, "Rating out of 5"%>
+        <%= form.number_field :rating, in: 1..5 %>
+      </div>
+
+      <div class = "field">
+        <%= form.label :feedback %>
+        <%= form.text_area :feedback %>
+      </div>
+
+      <%= form.submit "Submit Review" %>
+    <% end %>
+  </body>
+</html>
+
+
+

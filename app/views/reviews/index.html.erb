@@ -1,0 +1,12 @@
+<% if @reviews.empty? %>
+  <p>No Reviews added</p>
+  <%= link_to 'Add review', new_order_review_path(@order) %> <!-- Make sure @order is the correct variable for your path helper -->
+<% else %>
+  <% @reviews.each do |review| %>
+    <div>
+      <strong>Rating:</strong> <%= review.rating %><br>
+      <strong>Feedback:</strong> <%= review.feedback %><br>
+      <strong>By:</strong> <%= review.user.email %>
+    </div>
+  <% end %>
+<% end %>
