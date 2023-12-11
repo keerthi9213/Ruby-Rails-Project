@@ -31,6 +31,10 @@ Rails.application.routes.draw do
 
   get 'home/guide/quiz', to: 'quizzes#new', as: 'new_quiz'
   post 'home/guide/quiz', to: 'quizzes#create', as: 'create_quiz'
+  
+  resources :quizzes, only: [:new, :create, :show]
+
+ 
   get 'profile/edit', to: 'users#edit', as: 'edit_user_profile'
   patch 'profile', to: 'users#update', as: 'user_profile'
 
@@ -42,6 +46,9 @@ Rails.application.routes.draw do
   patch '/inventory/:id', to: 'inventory#update', as: 'update_inventory'
   delete '/listings/:id', to: 'birdhouse#destroy', as: 'delete_listing'
  
+
+  get 'listings/new', to: 'birdhouse#new', as: 'new'
+  post 'listings/new', to: 'birdhouse#save', as: 'save'
 
   resources :questions, only: [:create, :show] do
     resources :answers, only: [:create]

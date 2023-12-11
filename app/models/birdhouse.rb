@@ -25,4 +25,5 @@ class Birdhouse < ApplicationRecord
     has_many :carts, through: :cart_items
     has_many :customizations
 
+    has_one_attached :figure_image
 end

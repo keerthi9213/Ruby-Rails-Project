@@ -61,12 +61,6 @@ class BirdhouseController < ApplicationController
             redirect_to inventory_path, notice: "There was an error in deleting the birdhouse"
         end
     end
-      private
-    
-      def birdhouse_params
-        # Permit your birdhouse parameters here, for example:
-        params.require(:birdhouse).permit(:material, :color, :style, :roof_design, :size, :artistry, :likes, :quantity)
-      end
 
       def set_birdhouse
         @birdhouse = Birdhouse.find(params[:id])
@@ -78,5 +72,24 @@ class BirdhouseController < ApplicationController
         redirect_to listings_path, alert: "You are not authorized to view inventory page."
         end
     end
+
+    def new
+        @birdhouse = Birdhouse.new
+        render :new
+    end
+
+    def save
+        @birdhouse = Birdhouse.new(birdhouse_params)
+        if @birdhouse.save
+          redirect_to listings_show_path(@birdhouse), notice: 'Birdhouse was successfully created.'
+        else
+          render :new
+        end
+    end
+
+  def birdhouse_params
+      # Permit your birdhouse parameters here, for example:
+      params.require(:birdhouse).permit(:figure_image, :material, :color, :style, :roof_design, :size, :artistry, :quantity, :price)
+  end
 
 end

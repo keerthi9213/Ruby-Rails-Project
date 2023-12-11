@@ -99,14 +99,14 @@
 
 
 <div class="birdhouse-card">
-  <%= image_tag "birdhouse#{params[:id]}.jpg", alt: "Birdhouse Image", class: 'birdhouse-image' %>
+  <%= image_tag url_for(@birdhouse.figure_image), alt: "Birdhouse Image", class: 'birdhouse-image' %>
   <div class="info">
     <h3><%= @birdhouse.style %> Birdhouse</h3>
-    <p><strong>material:</strong> <%= @birdhouse.material %></p>
-    <p><strong>color:</strong> <%= @birdhouse.color %></p>
-    <p><strong>roof Design:</strong> <%= @birdhouse.roof_design %></p>
-    <p><strong>size:</strong> <%= @birdhouse.size %></p>
-    <p><strong>artistic Detail:</strong> <%= @birdhouse.artistic_details %></p>
+    <p><strong>Material:</strong> <%= @birdhouse.material %></p>
+    <p><strong>Color:</strong> <%= @birdhouse.color %></p>
+    <p><strong>Roof Design:</strong> <%= @birdhouse.roof_design %></p>
+    <p><strong>Size:</strong> <%= @birdhouse.size %></p>
+    <p><strong>Artistic Detail:</strong> <%= @birdhouse.artistic_details %></p>
     <p class="price">$<%= '%.2f' % @birdhouse.price %></p>
     <% if !current_user.role?%>
     <%= link_to 'Buy now',
