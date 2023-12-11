@@ -47,8 +47,6 @@ Rails.application.routes.draw do
   delete '/listings/:id', to: 'birdhouse#destroy', as: 'delete_listing'
  
 
-  #get 'inventory/new', to: 'inventory#new', as: 'new'
-  #post 'inventory/new', to: 'inventory#save', as: 'save'
   get 'listings/new', to: 'birdhouse#new', as: 'new'
   post 'listings/new', to: 'birdhouse#save', as: 'save'
 
