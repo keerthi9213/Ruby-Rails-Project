@@ -20,7 +20,7 @@
     <div class="cart-items">
       <% @cart.cart_items.each do |cart_item| %>
         <div class="cart-item" id="cart-item-<%= cart_item.id %>">
-          <%= image_tag "birdhouse#{cart_item.birdhouse.id}.jpg", class: 'birdhouse-image' %>
+                  <%= image_tag url_for(cart_item.birdhouse.figure_image), style:'width: 200px; height: 200px;'%>
           <div class="item-details">
             <h2><%= cart_item.birdhouse.style %></h2>
             <p>
