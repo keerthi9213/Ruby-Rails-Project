@@ -35,22 +35,24 @@
   <body>
    <h1>Purchase History</h1>
     <div class="container">
-    <% @orders.each do |order| %>
-      <div>
-        <!--<%= image_tag "birdhouse4.jpg", class: 'birdhouse-image' %>-->
-      <h3>Order ID: <%= order.id %></h3>
-      <p>Total cost: <%= order.total_cost %></p>
-      <p>Shipping Address: <%= order.shipping_address %></p>
-      <p>Payment details: <%= order.card_type %> ending with <%= order.card_number.to_s[-4..-1] %></p>
-      
-      <%= link_to 'Add Review', new_order_review_path(order), class: 'review-button'  %>
-      <%= link_to 'View Reviews', order_reviews_path(order), class: 'review-button' %>
-
-
-        <!-- Other order details -->
-      </div>
+    <% if @orders.present? %>
+      <% @orders.each do |order| %>
+        <div>
+          <!-- <%= image_tag "birdhouse4.jpg", class: 'birdhouse-image' %> -->
+          <h3>Order ID: <%= order.id %></h3>
+          <p>Total cost: <%= order.total_cost %></p>
+          <p>Shipping Address: <%= order.shipping_address %></p>
+          <p>Payment details: <%= order.card_type %> ending with <%= order.card_number.to_s[-4..-1] %></p>
+          <%= link_to 'Add Review', new_order_review_path(order), class: 'review-button'  %>
+          <%= link_to 'View Reviews', order_reviews_path(order), class: 'review-button' %>
+          <!-- Other order details -->
+        </div>
+      <% end %>
+    <% else %>
+      <p>No previous orders</p>
+      <%= link_to 'Go to Listings to make purchase', listings_path %>
     <% end %>
-    </div>
+  </div>
  
 
     <!--<div class="container">

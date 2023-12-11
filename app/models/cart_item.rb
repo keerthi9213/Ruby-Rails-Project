@@ -22,6 +22,10 @@
 class CartItem < ApplicationRecord
   belongs_to :cart
   belongs_to :birdhouse
+  has_one_attached :figure_image
+
+  
+
 
   # Set a default value for quantity
   after_initialize :set_defaults, unless: :persisted?
