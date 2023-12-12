@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user!, except: [:home]
     def create
         @question = current_user.questions.build(question_params)
         if @question.save

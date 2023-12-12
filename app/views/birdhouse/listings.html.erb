@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,8 +46,8 @@
       display: inline-block;
     }
     .apply-filters {
-      background-color: #28a745; /* Green color */
-    
+      background-color: #4CAF50; 
+      border: none;
     }
     .select-button:hover, .apply-filters:hover {
       filter: brightness(90%);
@@ -66,7 +67,10 @@
       border-bottom: 1px solid #eee;
       margin-bottom: 20px;
     }
-    
+    select{
+      color: black;
+      background: white;
+    }
     a {
       color: white;
       text-decoration: none;
@@ -85,17 +89,17 @@
 <div id="filter-form" style="display: none;">
   <%= form_tag(listings_path, method: :get, id: "filters-form", remote: true) do %>
     <div class="form-group">
-      <%= label_tag :material, 'material:' %>
+      <%= label_tag :material, 'Material:' %>
       <%= select_tag :material, options_for_select(['Ceramic', 'Wood', 'Stoneware'], params[:material]), include_blank: true %>
     </div>
 
     <div class="form-group">
-      <%= label_tag :roof_design, 'roof design:' %>
+      <%= label_tag :roof_design, 'Roof design:' %>
       <%= select_tag :roof_design, options_for_select(['Classic Teapot Lid', 'Sleek Round Lid', 'Pitched Barn roof', 'Smooth Dome Lid'], params[:roof_design]), include_blank: true %>
     </div>
 
     <div class="form-group">
-      <%= label_tag :size, 'size:' %>
+      <%= label_tag :size, 'Size:' %>
       <%= select_tag :size, options_for_select(['S', 'M', 'L', 'XL'], params[:size]), include_blank: true %>
     </div>
 
@@ -128,8 +132,8 @@
   <% else %>
     <% @birdhouses.each do |birdhouse| %>
       <div class="birdhouse-item">
-        <%= image_tag "birdhouse#{birdhouse.id}.jpg", class: 'birdhouse-image' %>
         <div class="birdhouse-details">
+          <%= image_tag url_for(birdhouse.figure_image), style:'width: 200px; height: 200px;'%>
           <p class="price">$<%= '%.2f' % birdhouse.price %></p>
           <%= link_to "Select", listings_show_path(birdhouse), class: 'select-button' %>
         </div>

@@ -56,11 +56,7 @@
             <div class = "form-container">
                 <h3>Complete Purchase</h3>
                 <%= bootstrap_form_with model: @order, method: :post, url: orders_path, data: { turbo: false }, html: { id: 'payment-form' }, local: true do |form| %>
-                    <!-- Shipping Information Fields -->
-                    <!--<div class="field">
-                        <%= form.label :shipping_address %>
-                        <%= form.text_area :shipping_address, required: true, style: 'background-color: white; color: black' %>
-                    </div>-->
+
                     <div class="field">
                         <%= form.text_area :shipping_address, placeholder: 'Shipping Address', required: true, style: 'width: 500px' %>
                     </div>
@@ -68,7 +64,6 @@
                     <div class="field">
                         <%= form.number_field :total_cost, value: @total_price, readonly: true %>
 
-                        <!--<%= form.number_field :total_cost, value: params[:total_price], required: true, readonly: true, style: 'width: 100px' %>-->
                     </div>
                     <p>PAYMENT DETAILS</p>
                     <!-- Simulated Payment Information -->

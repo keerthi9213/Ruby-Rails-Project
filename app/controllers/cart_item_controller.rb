@@ -1,4 +1,5 @@
 class CartItemController < ApplicationController
+  before_action :authenticate_user!, except: [:home]
     def update
         @cart_item = CartItem.find(params[:id])
         additional_quantity = params[:cart_item][:add_quantity].to_i

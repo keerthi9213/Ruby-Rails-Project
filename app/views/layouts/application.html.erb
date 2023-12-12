@@ -176,7 +176,7 @@
         <li><a href="/">Home</a></li>
         <li><%= link_to "Listings", listings_path %></li>
         <li><%= link_to "Guide", guide_path %></li>
-        <li><%= link_to "Customization", '#' %></li>
+        <li><%= link_to "Customization", customization_path %></li>
         <li><%= link_to "Gallery", gallery_path %></li>
         <li><%= link_to "About Us", aboutus_path %></li>
       </ul>
@@ -186,8 +186,7 @@
         <div class="user-info">
           <!-- Cart icon -->
           <%= link_to image_tag('cart.png', alt: 'Cart', height: '24'), cart_path, class: 'nav-link' %>
-          <!-- Profile image 
-          <%= link_to image_tag('profile.png', alt: 'Profile', height: '24'), class: 'nav-link' %>-->
+          <!-- Profile image -->
           <div class="dropdown">
           <div class="dropbtn">
             <%= image_tag('profile.png', alt: 'Profile', height: '24') %>
@@ -197,9 +196,7 @@
           <div class="dropdown-content">
             <%= link_to 'History', history_path %>
             <%= link_to 'Manage account', edit_user_profile_path %>
-            <%= link_to 'Settings', '#' %>
             
-            <!--<%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link', data: { turbo: false } %>-->
           </div>
         </div>
           <span>Hi, <%= current_user.email %></span>
@@ -236,29 +233,6 @@
       });
     });
   </script>
-    <!-- Flash Messages -->
-  <!--<% flash.each do |type, message| %>
-    <%= content_tag(:div, message, class: "flash #{type}") %>
-  <% end %>-->
-  <!--<% flash.each do |type, message| %>
-    <% if flash[type].present? %>
-      <%= content_tag(:div, message, class: "flash #{type}") %>
-    <% end %>
-    <% flash.discard(type) %>
-  <% end %>-->
-  <!--<% flash.each do |type, message| %>
-  <% if type == "alert" %>
-    <%= content_tag(:div, message, class: "flash #{type}") %>
-  <% end %>
-<% end %>-->
-   <!-- <% flash.each do |type, message| %>
-    <% if type == "alert" %>
-      <div class="<%= "flash #{type}" %>">
-        <%= message %>
-      </div>
-    <% end %>
-  <% end %>-->
-
   <main role="main" class="container">
     <%= yield %>
   </main>

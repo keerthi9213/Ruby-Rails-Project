@@ -1,0 +1,14 @@
+<h1>Your Quiz Inputs</h1>
+
+<% if @quiz %>
+  <p><strong>Location:</strong> <%= @quiz.city %></p>
+  <p><strong>Temperature:</strong> <%= @quiz.temperature %></p>
+  <p><strong>Number of Birds:</strong> <%= @quiz.number_of_birds %></p>
+  <p><strong>Number of Species:</strong> <%= @quiz.number_of_species %></p>
+  <p><strong>Species:</strong> <%= @quiz.species %></p>
+
+  <h1>Recommendations:</h1>
+  <p><%= @result %></p>
+<% else %>
+  <p>Quiz not found or you do not have permission to view it.</p>
+<% end %>

@@ -10,6 +10,10 @@
       border-bottom: 1px solid #eee;
       margin-bottom: 20px;
     }
+    .btn-primary{
+      background: #4CAF50;
+      color: white
+    }
     /* Add additional styles as needed */
   </style>
 </head>
@@ -20,7 +24,7 @@
     <div class="cart-items">
       <% @cart.cart_items.each do |cart_item| %>
         <div class="cart-item" id="cart-item-<%= cart_item.id %>">
-          <%= image_tag "birdhouse#{cart_item.birdhouse.id}.jpg", class: 'birdhouse-image' %>
+                  <%= image_tag url_for(cart_item.birdhouse.figure_image), style:'width: 200px; height: 200px;'%>
           <div class="item-details">
             <h2><%= cart_item.birdhouse.style %></h2>
             <p>
@@ -32,13 +36,14 @@
                   <option value="<%= i %>" <%= 'selected' if cart_item.quantity == i %>><%= i %></option>
                 <% end %>
               </select>
+               <%= button_to "Remove", buy_now_path(cart_item), method: :delete, data: { turbo: false } %>
             </p>
             <p>Unit Price: <%= number_to_currency(cart_item.birdhouse.price) %></p>
             <p>Total price: <span id="item-total-<%= cart_item.id %>" data-current-quantity="<%= cart_item.quantity %>"><%= number_to_currency(cart_item.total_price) %></span></p>
 
             <!--<p>Total Price: <span id="item-total-<%= cart_item.id %>"><%= number_to_currency(cart_item.quantity * cart_item.birdhouse.price) %></span></p>-->
             
-            <td><%= button_to "Remove", buy_now_path(cart_item), method: :delete, data: { turbo: false } %></td>
+           
 
             
           </div>
@@ -53,7 +58,7 @@
   <p>Shipping Fee: 5.99 </p>
   <p>Taxes: 3.99 </p>
   <strong>Total Price (Including Shipping and Taxes):</strong>
-  <span id="cart-total"><%= number_to_currency(@total_price) %></span>
+  <span id="cart-total"><%= number_to_currency(@total_price) %></span><br>
   <%= link_to 'Proceed to Checkout', checkout_path(total_price: @total_price), class: 'btn btn-primary' %>
 </div> 
   <% else %>

@@ -35,69 +35,24 @@
   <body>
    <h1>Purchase History</h1>
     <div class="container">
-    <% @orders.each do |order| %>
-      <div>
-        <!--<%= image_tag "birdhouse4.jpg", class: 'birdhouse-image' %>-->
-      <h3>Order ID: <%= order.id %></h3>
-      <p>Total cost: <%= order.total_cost %></p>
-      <p>Shipping Address: <%= order.shipping_address %></p>
-      <p>Payment details: <%= order.card_type %> ending with <%= order.card_number.to_s[-4..-1] %></p>
-      <%= link_to 'Add Review', '#', class: 'review-button' %>
-        <!-- Other order details -->
-      </div>
-    <% end %>
-    </div>
- 
-
-    <!--<div class="container">
+    <% if @orders.present? %>
       <% @orders.each do |order| %>
+        <div>
+          <!-- <%= image_tag "birdhouse4.jpg", class: 'birdhouse-image' %> -->
           <h3>Order ID: <%= order.id %></h3>
-          
           <p>Total cost: <%= order.total_cost %></p>
           <p>Shipping Address: <%= order.shipping_address %></p>
           <p>Payment details: <%= order.card_type %> ending with <%= order.card_number.to_s[-4..-1] %></p>
-          
-          <%= link_to 'Add Review', '#', class: 'review-button' %>
-
-      <% end %>-->
-
-      <!--<div class="container">
-      <% @orders.each do |order| %>
-        <% order.line_items.each do |line_item| %>
-        <div class="birdhouse-item">
-      <%= image_tag("birdhouse#{line_item.birdhouse.id}.jpg", alt: 'Birdhouse image', class: 'birdhouse-image') %>
-          <div class="birdhouse-item">
-            <%= image_tag "birdhouse#{birdhouse.id}.jpg", class: 'birdhouse-image' %>
-          <% end %>
-            <div class="birdhouse-details">
-              <p>Total cost: <%= order.total_cost %></p>
-          <p>Shipping Address: <%= order.shipping_address %></p>
-          <p>Payment details: <%= order.card_type %> ending with <%= order.card_number.to_s[-4..-1] %></p>
-          
-          <%= link_to 'Add Review', '#', class: 'review-button' %>
-              
-            </div>
-          </div>
-        <% end %>
-      </div>-->
-      <!--<div class="container">-->
-  <!--<% @orders.each do |order| %>
-    <% order.line_items.each do |line_item| %>
-      <div class="birdhouse-item">
-        <%= image_tag("birdhouse#{line_item.birdhouse.id}.jpg", alt: 'Birdhouse image', class: 'birdhouse-image') %>
-        <div class="birdhouse-details">
-           Details about the birdhouse 
+          <%= link_to 'Add Review', new_order_review_path(order), class: 'review-button'  %>
+          <%= link_to 'View Reviews', order_reviews_path(order), class: 'review-button' %>
+          <!-- Other order details -->
         </div>
-      </div>
+      <% end %>
+    <% else %>
+      <p>No previous orders</p>
+      <%= link_to 'Go to Listings to make purchase', listings_path %>
     <% end %>
-    <div class="order-details">
-      <h3>Order ID: <%= order.id %></h3>
-      <p>Total cost: <%= order.total_cost %></p>
-      <p>Shipping Address: <%= order.shipping_address %></p>
-      <p>Payment details: <%= order.card_type %> ending with <%= order.card_number.to_s[-4..-1] %></p>
-      <%= link_to 'Add Review', '#', class: 'review-button' %>
-    </div>
-  <% end %>-->
+  </div>
   
 </div>
 

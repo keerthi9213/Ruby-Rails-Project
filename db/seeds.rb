@@ -10,15 +10,20 @@
 # Users
 
 user1 = User.create!(
-  email:          'alice@email.com',
-  password:       'password',
+  first_name: 'alice',
+  last_name: 'mathew',
+  email: 'alice@email.com',
+  password: 'password',
+  contact_number: '+19011234567',
   role: 0
 )
 
 user2 = User.create!(
-
-  email:          'bob@email.com',
-  password:       'password',
+  first_name: 'bob',
+  last_name: 'jason',
+  email: 'bob@email.com',
+  password:'password',
+  contact_number: '+19017654321',
   role: 0
 )
 
@@ -96,7 +101,7 @@ birdhouses = Birdhouse.create([
   {
     material: 'Stoneware',
     color: 'Brown',
-    style: 'Contemporary',
+    style: 'Classic',
     roof_design: 'Classic Teapot Lid',
     size: 'L',
     artistic_details: 'Hand-painted floral design',
@@ -105,7 +110,7 @@ birdhouses = Birdhouse.create([
   {
     material: 'Wood',
     color: 'Silver',
-    style: 'Modern',
+    style: 'Cottage',
     roof_design: 'Classic Teapot Lid',
     size: 'S',
     artistic_details: 'Abstract Geometric Patterns',
@@ -114,7 +119,7 @@ birdhouses = Birdhouse.create([
   {
     material: 'Wood',
     color: 'White',
-    style: 'Rustic',
+    style: 'Victorian',
     roof_design: 'Pitched Barn roof',
     size: 'L',
     artistic_details: 'Abstract Geometric Patterns',
@@ -123,7 +128,7 @@ birdhouses = Birdhouse.create([
   {
     material: 'Ceramic',
     color: 'White',
-    style: 'Vintage',
+    style: 'Country',
     roof_design: 'Smooth Dome Lid',
     size: 'M',
     artistic_details: 'Stained Glass Panels',
@@ -132,7 +137,7 @@ birdhouses = Birdhouse.create([
   {
     material: 'Ceramic',
     color: 'Brown',
-    style: 'Modern',
+    style: 'Colonial',
     roof_design: 'Classic Teapot Lid',
     size: 'M',
     artistic_details: 'Abstract Geometric Patterns',
@@ -141,7 +146,7 @@ birdhouses = Birdhouse.create([
   {
     material: 'Stoneware',
     color: 'Silver',
-    style: 'Rustic',
+    style: 'Nautical',
     roof_design: 'Sleek Round Lid',
     size: 'S',
     artistic_details: 'Carved Wood Details',
@@ -150,7 +155,7 @@ birdhouses = Birdhouse.create([
   {
     material: 'Wood',
     color: ' Brown',
-    style: 'Contemporary',
+    style: 'Craftsman',
     roof_design: 'Smooth Dome Lid',
     size: 'XL',
     artistic_details: 'Carved Wood Details',
@@ -159,7 +164,7 @@ birdhouses = Birdhouse.create([
   {
     material: 'Ceramic',
     color: 'White',
-    style: 'Vintage',
+    style: 'Whimsical',
     roof_design: 'Smooth Dome Lid',
     size: 'XL',
     artistic_details: 'Stained Glass Panels',
@@ -167,3 +172,16 @@ birdhouses = Birdhouse.create([
   }
 ])
 
+
+
+image_filenames = ['birdhouse1.jpg','birdhouse2.jpg','birdhouse3.jpg','birdhouse4.jpg','birdhouse5.jpg','birdhouse6.jpg','birdhouse7.jpg','birdhouse8.jpg','birdhouse9.jpg','birdhouse10.jpg','birdhouse11.jpg','birdhouse12.jpg']
+ 
+#birdhouses.each do |birdhouse|
+ # image_filename = image_filenames.sample
+  #birdhouse.figure_image.attach(io: File.open(Rails.root.join("app/assets/images/#{image_filename}")), filename:image_filename)
+#end
+
+birdhouses.each_with_index do |birdhouse, index|
+  image_filename = image_filenames[index % image_filenames.size]
+  birdhouse.figure_image.attach(io: File.open(Rails.root.join("app/assets/images/#{image_filename}")), filename: image_filename)
+end

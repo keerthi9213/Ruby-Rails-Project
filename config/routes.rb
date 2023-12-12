@@ -31,6 +31,10 @@ Rails.application.routes.draw do
 
   get 'home/guide/quiz', to: 'quizzes#new', as: 'new_quiz'
   post 'home/guide/quiz', to: 'quizzes#create', as: 'create_quiz'
+  
+  resources :quizzes, only: [:new, :create, :show]
+
+ 
   get 'profile/edit', to: 'users#edit', as: 'edit_user_profile'
   patch 'profile', to: 'users#update', as: 'user_profile'
 
@@ -43,6 +47,9 @@ Rails.application.routes.draw do
   delete '/listings/:id', to: 'birdhouse#destroy', as: 'delete_listing'
  
 
+  get 'listings/new', to: 'birdhouse#new', as: 'new'
+  post 'listings/new', to: 'birdhouse#save', as: 'save'
+
   resources :questions, only: [:create, :show] do
     resources :answers, only: [:create]
   end
@@ -54,7 +61,17 @@ Rails.application.routes.draw do
   get 'orders/:id', to: 'orders#show', as: 'order_confirmation'
   get '/thank_you', to: 'orders#thank_you', as: 'thank_you'
 
+  resources :orders do
+    resources :reviews, only: [:new, :create, :index]
+  end
+
   delete '/users/:id', to: 'users#destroy', as: 'delete_user'
+
+  get 'home/customization', to: 'customization#index', as: 'customization'
+  post 'home/customization', to: 'customization#create', as: 'create_customization'
+
+
+
 
 
 end

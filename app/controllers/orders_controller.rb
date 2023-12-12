@@ -1,7 +1,9 @@
 # app/controllers/orders_controller.rb
 
 class OrdersController < ApplicationController
-    before_action :authenticate_user!, only: [:new, :create, :checkout]  # Assuming you're using Devise for user authentication
+    
+    before_action :authenticate_user!, except: [:home]
+    before_action :authenticate_user!, only: [:new, :create, :checkout] 
   
     #def new
       #@order = Order.new
@@ -40,6 +42,12 @@ class OrdersController < ApplicationController
   
     def order_params
       params.require(:order).permit(:shipping_address, :total_cost, :cardholder_name, :card_type, :card_number, :card_expiry, :card_cvv)
+    end
+
+    def show
+      @order = Order.find(params[:id])
+      @reviews = @order.reviews
+      @review = Review.new
     end
   end
   
