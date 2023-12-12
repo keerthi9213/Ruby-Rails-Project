@@ -19,9 +19,7 @@
   <div class="field">
     <%= form.select :size, ['S', 'M', 'L', 'XL'], { selected: @birdhouse.size, required: true }, { id: :birdhouse_size } %>
   </div>
-  <div class="field">
-    <%= form.select :artistic_details, ['Abstract Geometric Patterns', 'Stained Glass Panels', 'Hand-painted floral design', 'Carved Wood Details'], { selected: @birdhouse.artistic_details, required: true }, { id: :birdhouse_artistic_details } %>
-  </div>
+  
   <div class="field">
     <%= form.number_field :price, id: :birdhouse_price, value: @birdhouse.price, step: 'any', required: true %>
   </div>
