@@ -167,6 +167,8 @@ birdhouses = Birdhouse.create([
   }
 ])
 
+
+
 image_filenames = ['birdhouse1.jpg','birdhouse2.jpg','birdhouse3.jpg','birdhouse4.jpg','birdhouse5.jpg','birdhouse6.jpg','birdhouse7.jpg','birdhouse8.jpg','birdhouse9.jpg','birdhouse10.jpg','birdhouse11.jpg','birdhouse12.jpg']
  
 #birdhouses.each do |birdhouse|

@@ -1,0 +1,115 @@
+<%# app/views/customization/index.html.erb %>
+
+<% content_for :head do %>
+  <style>
+    .customization-container {
+      background: #f9f9f9;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .customization-container h2 {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .customization-form {
+      margin-bottom: 30px;
+    }
+    .customization-list {
+      list-style: none;
+      padding: 0;
+    }
+    .customization-list li {
+      margin-bottom: 15px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 10px;
+      position: relative;
+    }
+    .customization-list img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    .customization-detail {
+      margin-top: 10px;
+    }
+    .message-form {
+      margin-top: 30px;
+    }
+
+
+  </style>
+<% end %>
+
+<div class="customization-container">
+
+  <% if current_user.role? %>
+    <h2>Customization Requests:</h2>
+    <%# Admin sees all customization requests %>
+    <ul class="customization-list">
+      <% Customization.all.each do |customization| %>
+        <li>
+          <% if customization.figure_image.attached? %>
+            <%= image_tag(customization.figure_image, style: 'max-width: 200px; height: auto;') %>
+          <% end %>
+          <div class="customization-detail">
+            <strong>Birdhouse:</strong> <%= customization.birdhouse.style %><br>
+            <strong>Details:</strong> <%= customization.design_details %><br>
+            <strong>Requested by:</strong> <%= customization.user.email %><br>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+    
+  <% else %>
+    <%# User form to submit a new customization %>
+    <div class="customization-form">
+      <%= form_with model: Customization.new, url: create_customization_path, local: true do |form| %>
+        <div>
+          <p></p>
+          <%= form.label :birdhouse_id, 'Choose a Birdhouse:' %>
+          <%= form.collection_select :birdhouse_id, @birdhouses, :id, :style, prompt: "Select a Birdhouse" %>
+        </div>
+        <div>
+          <p></p>
+          <%= form.label :figure_image, 'Upload a Theme:' %>
+          <%= form.file_field :figure_image %>
+        </div>
+        <div>
+          <p></p>
+          <%= form.label :design_details, 'Design Details:' %>
+          <%= form.text_area :design_details %>
+        </div>
+        <p></p>
+        <%= form.submit 'Save Customization', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+
+    <%# List of user's saved customizations %>
+    <h2>Your Saved Customizations:</h2>
+    <% if @customizations.any? %>
+      <ul class="customization-list">
+        <% @customizations.each do |customization| %>
+          <li>
+            <% if customization.figure_image.attached? %>
+              <%= image_tag(customization.figure_image, style: 'max-width: 200px; height: auto;') %>
+            <% end %><br>
+            <strong>Birdhouse:</strong> <%= customization.birdhouse.style %>
+            
+<div class="customization-detail">
+<strong>Details:</strong> <%= customization.design_details %><br>
+</div>
+</li>
+<% end %>
+</ul>
+<% else %>
+<p>No customizations have been saved yet.</p>
+<% end %>
+<% end %>
+
+</div>
+
+
