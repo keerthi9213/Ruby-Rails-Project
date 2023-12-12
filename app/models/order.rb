@@ -33,8 +33,8 @@ class Order < ApplicationRecord
   has_many :reviews, dependent: :destroy
   validates :shipping_address, :cardholder_name, :card_number, :card_expiry, :card_cvv, presence: true
   validates :total_cost, numericality: true
-  validates :card_number, format: { with: /\A\d{16}\z/, message: "must be 16 digits" }
-  validates :card_cvv, format: { with: /\A\d{3,4}\z/, message: "must be 3 or 4 digits" }
+  #validates :card_number, format: { with: /\A\d{16}\z/, message: "must be 16 digits" }
+  #validates :card_cvv, format: { with: /\A\d{3,4}\z/, message: "must be 3 or 4 digits" }
   validates :card_type, inclusion: { in: ['VISA', 'MC', 'AMEX'] }
   
 

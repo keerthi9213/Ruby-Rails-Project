@@ -24,27 +24,22 @@ body{
 
 <%= bootstrap_form_with model: @quiz, method: :post, url: create_quiz_path(@quiz), data: {turbo:false} do |form| %>
   <div>
-    <!--<%= form.label :city, 'Location Details - City' %>-->
     <%= form.text_field :city %>
   </div>
   
   <div>
-    <!--<%= form.label :temperature, 'Temperature' %>-->
     <%= form.select :temperature, ['High', 'Average', 'Low'] %>
   </div>
   
   <div>
-    <!--<%= form.label :number_of_birds, 'Number of birds' %>-->
     <%= form.number_field :number_of_birds %>
   </div>
   
   <div>
-    <!--<%= form.label :number_of_species, 'Number of species' %>-->
     <%= form.number_field :number_of_species %>
   </div>
   
   <div>
-    <!--<%= form.label :species, 'What are the species?' %>-->
     <%= form.text_field :species %>
   </div>
   <%= form.submit "Finish quiz", class: "finish-quiz-btn"%>

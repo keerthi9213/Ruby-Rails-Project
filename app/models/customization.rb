@@ -26,6 +26,6 @@ class Customization < ApplicationRecord
   
 
   #validates :theme, presence: true
-  validates :design_details, presence: true, length: { minimum: 5} # Adjust validations as needed
+  #validates :design_details, presence: true, length: { minimum: 5} # Adjust validations as needed
 
 end
