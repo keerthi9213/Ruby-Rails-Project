@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-    before_action :authenticate_user!, except: [:show]
+    before_action :authenticate_user!, except: [:home]
     before_action :set_order, only: [:new, :create, :index]
   
     def new

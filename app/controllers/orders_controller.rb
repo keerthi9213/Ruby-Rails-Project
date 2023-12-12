@@ -1,7 +1,9 @@
 # app/controllers/orders_controller.rb
 
 class OrdersController < ApplicationController
-    before_action :authenticate_user!, only: [:new, :create, :checkout]  # Assuming you're using Devise for user authentication
+    
+    before_action :authenticate_user!, except: [:home]
+    before_action :authenticate_user!, only: [:new, :create, :checkout] 
   
     #def new
       #@order = Order.new

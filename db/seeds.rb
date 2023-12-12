@@ -96,7 +96,7 @@ birdhouses = Birdhouse.create([
   {
     material: 'Stoneware',
     color: 'Brown',
-    style: 'Contemporary',
+    style: 'Classic',
     roof_design: 'Classic Teapot Lid',
     size: 'L',
     artistic_details: 'Hand-painted floral design',
@@ -105,7 +105,7 @@ birdhouses = Birdhouse.create([
   {
     material: 'Wood',
     color: 'Silver',
-    style: 'Modern',
+    style: 'Cottage',
     roof_design: 'Classic Teapot Lid',
     size: 'S',
     artistic_details: 'Abstract Geometric Patterns',
@@ -114,7 +114,7 @@ birdhouses = Birdhouse.create([
   {
     material: 'Wood',
     color: 'White',
-    style: 'Rustic',
+    style: 'Victorian',
     roof_design: 'Pitched Barn roof',
     size: 'L',
     artistic_details: 'Abstract Geometric Patterns',
@@ -123,7 +123,7 @@ birdhouses = Birdhouse.create([
   {
     material: 'Ceramic',
     color: 'White',
-    style: 'Vintage',
+    style: 'Country',
     roof_design: 'Smooth Dome Lid',
     size: 'M',
     artistic_details: 'Stained Glass Panels',
@@ -132,7 +132,7 @@ birdhouses = Birdhouse.create([
   {
     material: 'Ceramic',
     color: 'Brown',
-    style: 'Modern',
+    style: 'Colonial',
     roof_design: 'Classic Teapot Lid',
     size: 'M',
     artistic_details: 'Abstract Geometric Patterns',
@@ -141,7 +141,7 @@ birdhouses = Birdhouse.create([
   {
     material: 'Stoneware',
     color: 'Silver',
-    style: 'Rustic',
+    style: 'Nautical',
     roof_design: 'Sleek Round Lid',
     size: 'S',
     artistic_details: 'Carved Wood Details',
@@ -150,7 +150,7 @@ birdhouses = Birdhouse.create([
   {
     material: 'Wood',
     color: ' Brown',
-    style: 'Contemporary',
+    style: 'Craftsman',
     roof_design: 'Smooth Dome Lid',
     size: 'XL',
     artistic_details: 'Carved Wood Details',
@@ -159,7 +159,7 @@ birdhouses = Birdhouse.create([
   {
     material: 'Ceramic',
     color: 'White',
-    style: 'Vintage',
+    style: 'Whimsical',
     roof_design: 'Smooth Dome Lid',
     size: 'XL',
     artistic_details: 'Stained Glass Panels',
