@@ -41,5 +41,11 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:shipping_address, :total_cost, :cardholder_name, :card_type, :card_number, :card_expiry, :card_cvv)
     end
+
+    def show
+      @order = Order.find(params[:id])
+      @reviews = @order.reviews
+      @review = Review.new
+    end
   end
   

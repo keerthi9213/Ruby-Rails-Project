@@ -61,10 +61,16 @@ Rails.application.routes.draw do
   get 'orders/:id', to: 'orders#show', as: 'order_confirmation'
   get '/thank_you', to: 'orders#thank_you', as: 'thank_you'
 
+  resources :orders do
+    resources :reviews, only: [:new, :create, :index]
+  end
+
   delete '/users/:id', to: 'users#destroy', as: 'delete_user'
 
   get 'home/customization', to: 'customization#index', as: 'customization'
   post 'home/customization', to: 'customization#create', as: 'create_customization'
+
+
 
 
 
