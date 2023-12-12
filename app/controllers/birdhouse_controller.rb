@@ -1,5 +1,5 @@
 class BirdhouseController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user!, except: [:home]
     before_action :check_if_vendor, only: [:inventory]
     before_action :set_birdhouse, only: [:edit, :update, :show, :destroy]
     def listings

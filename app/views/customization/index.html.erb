@@ -39,7 +39,10 @@
     .message-form {
       margin-top: 30px;
     }
-
+    .select{
+      color: black;
+      background: white;
+    }
 
   </style>
 <% end %>
@@ -71,17 +74,17 @@
         <div>
           <p></p>
           <%= form.label :birdhouse_id, 'Choose a Birdhouse:' %>
-          <%= form.collection_select :birdhouse_id, @birdhouses, :id, :style, prompt: "Select a Birdhouse" %>
+          <%= form.collection_select :birdhouse_id, @birdhouses, :id, :style, prompt: "Select a Birdhouse",class: "customization-field" %>
         </div>
         <div>
           <p></p>
           <%= form.label :figure_image, 'Upload a Theme:' %>
-          <%= form.file_field :figure_image %>
+          <%= form.file_field :figure_image, class: "customization-field" %>
         </div>
         <div>
           <p></p>
           <%= form.label :design_details, 'Design Details:' %>
-          <%= form.text_area :design_details %>
+          <%= form.text_area :design_details, class: "customization-field" %>
         </div>
         <p></p>
         <%= form.submit 'Save Customization', class: 'btn btn-primary' %>

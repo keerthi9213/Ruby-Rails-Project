@@ -1,20 +1,28 @@
 <html>
   <head>
+    <style>
+      .review{
+        background: white;
+        color: black;
+      }
+    </style>
   </head>
   <body>
+    <div class = 'add-review'>
     <%= form_with(model: [ @order, @order.reviews.build ], local: true) do |form| %>
       <div class = "field">
         <%= form.label :rating, "Rating out of 5"%>
-        <%= form.number_field :rating, in: 1..5 %>
+        <%= form.number_field :rating, in: 1..5, class: "review" %>
       </div>
 
       <div class = "field">
         <%= form.label :feedback %>
-        <%= form.text_area :feedback %>
+        <%= form.text_area :feedback, class: "review" %>
       </div>
 
       <%= form.submit "Submit Review" %>
     <% end %>
+    </div>
   </body>
 </html>
 
