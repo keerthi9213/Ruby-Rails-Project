@@ -10,15 +10,20 @@
 # Users
 
 user1 = User.create!(
-  email:          'alice@email.com',
-  password:       'password',
+  first_name: 'alice',
+  last_name: 'mathew',
+  email: 'alice@email.com',
+  password: 'password',
+  contact_number: '+19011234567',
   role: 0
 )
 
 user2 = User.create!(
-
-  email:          'bob@email.com',
-  password:       'password',
+  first_name: 'bob',
+  last_name: 'jason',
+  email: 'bob@email.com',
+  password:'password',
+  contact_number: '+19017654321',
   role: 0
 )
 
