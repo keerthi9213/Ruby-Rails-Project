@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_action :authenticate_user!, except: [:home]
+  before_action :authenticate_user!, except: [:show, :aboutus]
   def show
     render :show
   end
@@ -15,10 +15,6 @@ class HomeController < ApplicationController
   
   def aboutus
     
-  end
-
-  def aboutus
-    
-  end
+  end 
 
 end
