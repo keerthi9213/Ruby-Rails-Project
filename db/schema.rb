@@ -85,6 +85,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_09_215912) do
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
+  create_table "customizations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "birdhouse_id", null: false
+    t.text "design_details"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["birdhouse_id"], name: "index_customizations_on_birdhouse_id"
+    t.index ["user_id"], name: "index_customizations_on_user_id"
+  end
+
   create_table "line_items", force: :cascade do |t|
     t.bigint "order_id", null: false
     t.bigint "birdhouse_id", null: false
@@ -167,6 +177,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_09_215912) do
   add_foreign_key "cart_items", "birdhouses"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "carts", "users"
+  add_foreign_key "customizations", "birdhouses"
+  add_foreign_key "customizations", "users"
   add_foreign_key "line_items", "birdhouses"
   add_foreign_key "line_items", "orders"
   add_foreign_key "orders", "users"

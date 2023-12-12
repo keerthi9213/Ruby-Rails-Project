@@ -67,6 +67,10 @@ Rails.application.routes.draw do
 
   delete '/users/:id', to: 'users#destroy', as: 'delete_user'
 
+  get 'home/customization', to: 'customization#index', as: 'customization'
+  post 'home/customization', to: 'customization#create', as: 'create_customization'
+
+
 
 
 

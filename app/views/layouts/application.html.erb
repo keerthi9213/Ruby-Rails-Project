@@ -176,7 +176,7 @@
         <li><a href="/">Home</a></li>
         <li><%= link_to "Listings", listings_path %></li>
         <li><%= link_to "Guide", guide_path %></li>
-        <li><%= link_to "Customization", '#' %></li>
+        <li><%= link_to "Customization", customization_path %></li>
         <li><%= link_to "Gallery", gallery_path %></li>
         <li><%= link_to "About Us", aboutus_path %></li>
       </ul>
@@ -197,7 +197,7 @@
           <div class="dropdown-content">
             <%= link_to 'History', history_path %>
             <%= link_to 'Manage account', edit_user_profile_path %>
-            <%= link_to 'Settings', '#' %>
+            
             
             <!--<%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link', data: { turbo: false } %>-->
           </div>
