@@ -27,7 +27,7 @@ class User < ApplicationRecord
   has_many :quizzes, dependent: :destroy
   has_many :answers, dependent: :destroy
   has_many :orders, dependent: :destroy
-  has_many :customizations
+  has_many :customizations, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
   def create_cart
