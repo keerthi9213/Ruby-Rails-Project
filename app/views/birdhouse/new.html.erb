@@ -12,7 +12,7 @@
     <%= form.select :color, ['Brown', 'White', 'Blue', 'Green'], { selected: @birdhouse.color, required: true }, { id: :birdhouse_color } %>
   </div>
   <div class="field">
-      <%= form.select :style, ['Vintage', 'Modern', 'Rustic', 'Classic'], { selected: @birdhouse.style, required: true }, { id: :birdhouse_style } %>
+      <%= form.text_field :style, id: :birdhouse_style, value: @birdhouse.style, required: true %>
   </div>
   <div class="field">
         <%= form.select :roof_design, ['Classic Teapot Lid', 'Sleek Round Lid', 'Pitched Barn Roof', 'Smooth Dome Lid'], { selected: @birdhouse.roof_design, required: true }, { id: :birdhouse_roof_design } %>

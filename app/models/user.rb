@@ -27,7 +27,7 @@ class User < ApplicationRecord
   has_many :quizzes, dependent: :destroy
   has_many :answers, dependent: :destroy
   has_many :orders, dependent: :destroy
-  has_many :customizations
+  has_many :customizations, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
   def create_cart
@@ -39,7 +39,6 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :orders, dependent: :destroy
-  has_many :orders
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   def vendor?
